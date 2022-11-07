@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import 'antd/dist/antd.min.css';
 import Menu from "../components/Menu/Menu";
 import FooterContent from "../components/FooterContent/FooterContent";
@@ -7,19 +7,21 @@ import { Layout } from "antd";
 
 const { Header, Content, Footer } = Layout;
 const Contato = () => (
-    <div className="Contato">
+    <Fragment>
         <Layout>
             <Header>
                 <Menu />
             </Header>
-            <Content>
+
+            <Content className="content">
+            
             </Content>
-            <Footer>
+            
+            <Footer className="footer">
                 <FooterContent/>
             </Footer>
         </Layout>
-    </div>
-
+    </Fragment>
 );
 
 export default Contato;

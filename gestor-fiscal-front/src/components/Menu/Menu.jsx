@@ -2,6 +2,8 @@ import React from "react";
 import './Menu.css';
 import { Link } from "react-router-dom";
 import { Menu } from "antd";
+import icon from '../../assets/icon.png';
+
 
 import {
     HomeOutlined,
@@ -28,10 +30,11 @@ import {
 ];
 
 const menu = () => (
-    <div className="Menu">
-        <Menu items={menuItems} mode="horizontal"  />
+    <div className="menu"> 
+        <img className="logo-menu" src={icon} alt="Icone" width={50} height={50}/>
+        <h1 className="titulo-menu"><Link to="/sobre">Gestor Fiscal</Link></h1>
+        <Menu items={menuItems} mode="horizontal" theme="dark" />
     </div>
-
 );
 
 export default menu;

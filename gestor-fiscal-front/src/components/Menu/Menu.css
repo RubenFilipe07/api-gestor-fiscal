@@ -1,0 +1,25 @@
+div .menu{
+    display: flex;
+    justify-content: flex-end;
+    user-select: none;
+}
+
+.titulo-menu{
+    position: absolute;
+    top: 0px;
+    left: 70px;
+    margin: 0px;
+    padding:0px;
+}
+
+.titulo-menu a{
+    color: #FFFF;
+}
+
+.logo-menu{
+    position: absolute;
+    top: 7px;
+    left: 10px;
+    margin: 0px;
+    padding:0px;
+}
