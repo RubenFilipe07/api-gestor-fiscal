@@ -9,28 +9,27 @@ import {
     InfoCircleOutlined
   } from '@ant-design/icons';
   
-  
+  const menuItems = [
+    {
+        key: 'Inicio',
+        icon: <HomeOutlined />,
+        label: (<Link to="/">Inicio</Link>),
+    },
+    {
+        key: 'Contato',
+        icon: <ContactsOutlined />,
+        label: (<Link to="/contato">Contato</Link>),
+    },
+    {
+        key: 'Sobre',
+        icon: <InfoCircleOutlined />,
+        label: (<Link to="/sobre">Sobre</Link>),
+    },
+];
+
 const menu = () => (
     <div className="Menu">
-
-        <Menu theme="dark" mode="horizontal">
-            
-            <Menu.Item key="1">
-                <HomeOutlined /> 
-                <Link className="links-menu" to="/">Inicio</Link>
-            </Menu.Item>
-
-            <Menu.Item key="2">
-                <InfoCircleOutlined />
-                <Link className="links-menu" to="/sobre">Sobre</Link>
-            </Menu.Item>
-
-            <Menu.Item key="2">
-                <ContactsOutlined />
-                <Link className="links-menu" to="/contato">Contato</Link>
-            </Menu.Item>
-        </Menu>
-        
+        <Menu items={menuItems} mode="horizontal"  />
     </div>
 
 );
