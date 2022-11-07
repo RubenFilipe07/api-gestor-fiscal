@@ -1,7 +1,7 @@
 import React from "react";
-import 'antd/dist/antd.min.css';
 import './Menu.css';
-import { Layout, Menu } from "antd";
+import { Link } from "react-router-dom";
+import { Menu } from "antd";
 
 import {
     HomeOutlined,
@@ -10,41 +10,27 @@ import {
   } from '@ant-design/icons';
   
   
-
-const { Header, Content, Footer } = Layout;
 const menu = () => (
     <div className="Menu">
-       <Layout>
-        <Header>
+
         <Menu theme="dark" mode="horizontal">
             
             <Menu.Item key="1">
                 <HomeOutlined /> 
-                <a className="links-menu" href="/">Inicio</a>
+                <Link className="links-menu" to="/">Inicio</Link>
             </Menu.Item>
 
             <Menu.Item key="2">
                 <InfoCircleOutlined />
-                <a className="links-menu" href="/">Sobre</a>
+                <Link className="links-menu" to="/sobre">Sobre</Link>
             </Menu.Item>
 
             <Menu.Item key="2">
                 <ContactsOutlined />
-                <a className="links-menu" href="/">Contato</a>
+                <Link className="links-menu" to="/contato">Contato</Link>
             </Menu.Item>
         </Menu>
         
-        </Header>
-        <Content>
-        </Content>
-        <Footer>
-            <span className="texto-footer">
-                &copy; Rúben Filipe 2022. Feito com react.js e ant.design
-            </span>
-            
-        </Footer>
-
-       </Layout>
     </div>
 
 );

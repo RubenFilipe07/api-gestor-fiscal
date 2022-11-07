@@ -6,8 +6,8 @@ import FooterContent from "../components/FooterContent/FooterContent";
 import { Layout } from "antd";
 
 const { Header, Content, Footer } = Layout;
-const Home = () => (
-    <div className="Home">
+const Contato = () => (
+    <div className="Contato">
         <Layout>
             <Header>
                 <Menu />
@@ -22,4 +22,4 @@ const Home = () => (
 
 );
 
-export default Home;
+export default Contato;
