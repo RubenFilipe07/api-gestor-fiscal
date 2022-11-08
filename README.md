@@ -1,8 +1,7 @@
 # Gestor fiscal
 Este é um projeto baseado numa API REST feita com <a href="https://spring.io/projects/spring-boot">Spring</a>, banco de dados
 <a href="https://www.postgresql.org/">PostgreSql</a> e uma aplicação <a href="https://reactjs.org/">React.js</a> que manipula os dados via axios e
-utiliza o ant design. Tem como objetivo servir de ferramenta para calcular
-de impostos sobre os produtos cadastrados.
+utiliza o ant design. Tem como objetivo servir de ferramenta para calcular os impostos sobre os produtos cadastrados.
 
 <h3>Links</h3>
 <ul>
@@ -14,7 +13,6 @@ de impostos sobre os produtos cadastrados.
 <img width="800" src="https://user-images.githubusercontent.com/53026536/200506717-d0f78b11-46bd-4648-9d7b-32c6c97ddeb3.png"/>
 <img width="800" src="https://user-images.githubusercontent.com/53026536/200507065-316dc264-2cfe-459b-b3ee-bc32dfe7b81a.png"/>
 <img width="800" src="https://user-images.githubusercontent.com/53026536/200507044-db1e5c59-0c97-4f97-a708-a14f7183bf3e.png"/>
-
 
 <h3>Ferramentas utilizadas</h3>
 <ul>
