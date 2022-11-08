@@ -3,6 +3,27 @@ Este é um projeto baseado numa API REST feita com <a href="https://spring.io/pr
 <a href="https://www.postgresql.org/">PostgreSql</a> e uma aplicação <a href="https://reactjs.org/">React.js</a> que manipula os dados via axios e
 utiliza o ant design. Tem como objetivo servir de ferramenta para calcular os impostos sobre os produtos cadastrados.
 
+<h3>Como instalar o projeto</h3>
+
+<ol>
+  <li>Clone o repositório com o comando: <code>git clone https://github.com/RubenFilipe07/portfolio</code> </li>
+</ol>
+
+<h5>Para rodar o projeto React</h5>
+<ol>
+  <li>Certifique-se de ter o node.js instalado na sua máquina, caso não tenha, baixe aqui: <a href="https://nodejs.org/en/">nodejs.org</a></li>
+  <li>Dentro do projeto digite <code>npm i</code> no terminal para baixar as dependências</li>
+  <li>Digite <code>npm start</code> para iniciar o servidor e o acesse pelo link: <code>http://localhost:3000/</code></li>
+</ol>
+
+<h5>Para rodar o projeto Spring</h5>
+<ol>
+  <li>Com um servidor postgresql rodando em sua máquina, veja as configurações de conexão com o banco de dados em  <code>src/main/resources/application.properties</code> para realizar a conexão de acordo com suas credenciais locais</li>
+  <li>Crie um banco com o nome proposto no arquivo anterior (altere caso preferir)</li>
+  <li>Inicie um servidor local do projeto com <code>/mvnw spring-boot:run</code></li>
+  <li>Abra o seguinte link em seu navegador de preferência: <code>http://localhost:8080/</code></li>
+</ol>
+
 <h3>Links</h3>
 <ul>
     <li><a href="https://gestor-fiscal.web.app/">Aplicação</a></li>
