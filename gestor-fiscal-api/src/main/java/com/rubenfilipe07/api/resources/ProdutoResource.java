@@ -61,6 +61,12 @@ public class ProdutoResource {
 		produtoRepository.delete(produto);
 	}
 	
+	@DeleteMapping("/produtos/{id}")
+	@ApiOperation(value="Deleta um produto único de acordo com seu id")
+	public void deletaProdutoId(@PathVariable(value="id") long id) {
+		 produtoRepository.deleteById(id);
+	}
+	
 
 
 }

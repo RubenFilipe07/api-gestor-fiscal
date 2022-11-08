@@ -8,10 +8,15 @@ body {
 }
 
 .content{
-  height: 86vh;
+  min-height: 86vh !important;
   background-color: rgb(240, 240, 240);
 }
 
 .footer{
   background-color: rgb(235, 235, 235) !important;
+}
+
+.tabelaCadastrados{
+  width: 90%;
+  margin: 0px auto;
 }

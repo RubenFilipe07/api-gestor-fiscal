@@ -11,7 +11,7 @@ const homeContent = () => (
                         <Card title="Produtos" bordered={false}>
                              <p className="card-text">Cadastre os seus produtos e seus respectivos valores para então calcular os impostos sobre eles.</p>
                             <Button type="primary" size="large" shape="round" block="true">
-                                <Link to="/contato">Gerenciar</Link>
+                                <Link to="/cadastro-produtos">Gerenciar</Link>
                             </Button>
                         </Card>
                     </Col>
