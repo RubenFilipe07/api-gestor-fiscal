@@ -30,7 +30,7 @@ import io.swagger.annotations.ApiOperation;
 public class IcmsResource {
 	
 	@Autowired
-	IcmsRepository icmsRepository;
+	private IcmsRepository icmsRepository;
 	
 	@GetMapping("/icms")
 	@ApiOperation(value="Retorna a lista de imcs cadastrados")

@@ -29,7 +29,7 @@ import io.swagger.annotations.ApiOperation;
 public class ProdutoResource {
 	
 	@Autowired
-	ProdutoRepository produtoRepository;
+	private ProdutoRepository produtoRepository;
 	
 	@GetMapping("/produtos")
 	@ApiOperation(value="Retorna a lista de produtos cadastrados")
