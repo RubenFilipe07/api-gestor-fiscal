@@ -23,7 +23,7 @@ export default class CadastroProdutos extends Component {
 
 
   componentDidMount() {
-    axios.get(`http://localhost:8080/api/produtos/`)
+    axios.get(`https://gestor-fiscal.herokuapp.com/api/produtos`)
       .then(res => {
         const data = res.data;
         this.setState({ data });
@@ -31,7 +31,7 @@ export default class CadastroProdutos extends Component {
   }
 
   cadastrarProduto = () => {
-    axios.post(`http://localhost:8080/api/produtos/`, {
+    axios.post(`https://gestor-fiscal.herokuapp.com/api/produtos`, {
       nome: this.state.nome,
       valor: this.state.valor,
 
@@ -42,7 +42,7 @@ export default class CadastroProdutos extends Component {
   }
 
   atualizaTabela = () => {
-    axios.get(`http://localhost:8080/api/produtos/`)
+    axios.get(`https://gestor-fiscal.herokuapp.com/api/produtos`)
       .then(res => {
         const data = res.data;
         this.setState({ data });
@@ -51,7 +51,7 @@ export default class CadastroProdutos extends Component {
   }
 
   apagarProduto = () => {
-    axios.delete(`http://localhost:8080/api/produtos/`)
+    axios.delete(`https://gestor-fiscal.herokuapp.com/api/produtos`)
       .then(res => {
         this.atualizaTabela();
       }
@@ -74,7 +74,7 @@ export default class CadastroProdutos extends Component {
   }
 
   deleteRow = (id) => {
-    axios.delete(`http://localhost:8080/api/produtos/` + id)
+    axios.delete(`https://gestor-fiscal.herokuapp.com/api/produtos` + id)
       .then(res => {
         this.atualizaTabela();
       }
