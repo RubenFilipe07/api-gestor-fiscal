@@ -18,7 +18,11 @@ export default class CadastroProdutos extends Component {
     data: [],
     nome: '',
     valor: 0,
-    open: false
+    id: 0,
+    open: false,
+      idM: 0,
+      nomeM: '',
+      valorM: 0
   }
 
 
@@ -50,9 +54,14 @@ export default class CadastroProdutos extends Component {
       )
   }
 
-  apagarProduto = () => {
-    axios.delete(`https://gestor-fiscal.herokuapp.com/api/produtos`)
+  alteraProduto = () => {
+    axios.put(`https://gestor-fiscal.herokuapp.com/api/produtos`, {
+      id: this.state.id,
+      nome: this.state.nome,
+      valor: this.state.valor,
+    })
       .then(res => {
+        this.setState({ open: false });
         this.atualizaTabela();
       }
       )
@@ -73,16 +82,25 @@ export default class CadastroProdutos extends Component {
     });
   }
 
+  handleChangeId = (event) => {
+    this.setState({
+      id: event.target.value,
+    });
+  }
+
   deleteRow = (id) => {
-    axios.delete(`https://gestor-fiscal.herokuapp.com/api/produtos` + id)
+    axios.delete(`https://gestor-fiscal.herokuapp.com/api/produtos/` + id)
       .then(res => {
         this.atualizaTabela();
       }
       )
   };
 
-  editRow = (id) => {
-    this.setState({ open: true});
+  editRow = (id, nome, valor) => {
+    this.setState({ open: true });
+    this.setState({ idM: id });
+    this.setState({ nomeM: nome });
+    this.setState({ valorM: valor });
     this.atualizaTabela();
   };
 
@@ -115,7 +133,7 @@ export default class CadastroProdutos extends Component {
           </Space>
         </Button>
 
-        <Button type="primary" onClick={() => this.editRow(record.id)}>
+        <Button type="primary" onClick={() => this.editRow(record.id, record.nome, record.valor)}>
           <Space size="small" >
             Editar
           </Space>
@@ -145,11 +163,26 @@ export default class CadastroProdutos extends Component {
               title="Modal"
               open={this.state.open}
               onCancel={() => this.setState({ open: false })}
-              onOk={() => this.setState({ open: false })}
+              onOk={() => this.alteraProduto}
+              footer={null}
+              destroyOnClose={true}
             >
-              <p>Bla bla ...</p>
-              <p>Bla bla ...</p>
-              <p>Bla bla ...</p>
+              <Form>
+                <Form.Item name="id-produto" onChange={this.handleChangeId} label="Id do produto">
+                  <Input type={"number"} defaultValue={this.state.idM}/>
+                </Form.Item>
+                <Form.Item name="nome-produto" onChange={this.handleChangeName} label="Nome do produto">
+                  <Input defaultValue={this.state.nomeM}/>
+                </Form.Item>
+                <Form.Item name="valor-produto" onChange={this.handleChangeValue} label="Valor">
+                  <Input type={"number"}  defaultValue={this.state.valorM}/>
+                </Form.Item>
+                <Form.Item>
+                  <Button type="primary" htmlType="submit" onClick={this.alteraProduto}>
+                    <SaveFilled />Atualiza Valor
+                  </Button>
+                </Form.Item>  
+              </Form>
             </Modal>
 
 
@@ -160,15 +193,15 @@ export default class CadastroProdutos extends Component {
             <h1>Cadastrar Novo Produto</h1>
 
             <Form>
-              <Form.Item name="name" key={'name'} onChange={this.handleChangeName} label="Nome do produto">
+              <Form.Item name="nome-produto" onChange={this.handleChangeName} label="Nome do produto">
                 <Input />
               </Form.Item>
-              <Form.Item name="value" key={'value'} onChange={this.handleChangeValue} label="Valor">
+              <Form.Item name="valor-produto" onChange={this.handleChangeValue} label="Valor">
                 <Input type={"number"} />
               </Form.Item>
               <Form.Item>
                 <Button type="primary" htmlType="submit" onClick={this.cadastrarProduto}>
-                  <SaveFilled />Cadastrar
+                  <SaveFilled />Salvar
                 </Button>
               </Form.Item>
             </Form>
