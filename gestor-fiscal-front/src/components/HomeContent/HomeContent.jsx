@@ -19,7 +19,7 @@ const homeContent = () => (
                         <Card title="Icms estadual" bordered={false}>
                              <p className="card-text">Calcule o valor do ICMS de com a aliquota de operação do estado de origem.</p>       
                             <Button type="primary" size="large" shape="round" block="true">
-                                <Link to="/contato">Calcular</Link>
+                                <Link to="/calculo-icms-estadual">Calcular</Link>
                             </Button>
                         </Card>
                     </Col>
@@ -27,7 +27,7 @@ const homeContent = () => (
                         <Card title="Icms interestadual" bordered={false}>
                             <p className="card-text">Calcule o valor do ICMS de com a aliquota de operação entre estado de origem e destino.</p>
                             <Button type="primary" size="large" shape="round" block="true">
-                                <Link to="/contato">Calcular</Link>
+                                <Link to="/calculo-icms-interestadual">Calcular</Link>
                             </Button>
                         </Card>
                     </Col>
