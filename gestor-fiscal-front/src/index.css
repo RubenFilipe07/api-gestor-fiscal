@@ -20,38 +20,3 @@ body {
   width: 90%;
   margin: 0px auto;
 }
-
-.titulo-bloco{
-  margin: 0px auto;
-  width: 90%;
-  text-align: center;
-  font-size: 1.5em;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.form-cadastrar-produto{
-  width: 40%;
-  background-color: #ffff;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  margin: 0px auto !important;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.form-cadastrar-produto input{
-  margin: 20px 0px 20px 0px;
-  width: 90%;
-}
-
-.form-cadastrar-produto label{
-  margin: 20px;
-}
-
-.form-cadastrar-produto button{
-  margin: 10px;
-  width: 90%;
-}
-
