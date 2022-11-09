@@ -62,6 +62,13 @@ public class IcmsResource {
 		icmsRepository.delete(icms);
 	}
 	
+	@DeleteMapping("/icms/{id}")
+	@ApiOperation(value="Deleta um icms único de acordo com seu id")
+	public void deletaIcmsId(@PathVariable(value="id") long id) {
+		icmsRepository.deleteById(id);
+	}
+	
+	
 
 
 }
