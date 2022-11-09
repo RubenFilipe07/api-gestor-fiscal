@@ -17,17 +17,17 @@ const homeContent = () => (
                     </Col>
                     <Col span={5}>
                         <Card title="Icms estadual" bordered={false}>
-                             <p className="card-text">Calcule o valor do ICMS de com a aliquota de operação do estado de origem.</p>       
+                             <p className="card-text">Cadastre o valor do ICMS de acordo com as alíquotas de cada estado.</p>       
                             <Button type="primary" size="large" shape="round" block="true">
-                                <Link to="/calculo-icms-estadual">Calcular</Link>
+                                <Link to="/cadastrar-icms">Cadastrar</Link>
                             </Button>
                         </Card>
                     </Col>
                     <Col span={5}>
                         <Card title="Icms interestadual" bordered={false}>
-                            <p className="card-text">Calcule o valor do ICMS de com a aliquota de operação entre estado de origem e destino.</p>
+                            <p className="card-text">Calcule o valor do ICMS de com os valores dos produtos cadastrados e a alíquota estadual</p>
                             <Button type="primary" size="large" shape="round" block="true">
-                                <Link to="/calculo-icms-interestadual">Calcular</Link>
+                                <Link to="/calculo-icms">Calcular</Link>
                             </Button>
                         </Card>
                     </Col>
