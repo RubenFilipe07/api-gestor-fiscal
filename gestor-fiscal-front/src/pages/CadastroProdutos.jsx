@@ -7,7 +7,8 @@ import { Layout, Breadcrumb, Table, Form, Input, Button, Space, Modal } from "an
 import { Link } from "react-router-dom";
 import {
   SaveFilled,
-  DeleteOutlined
+  DeleteOutlined,
+  EditOutlined,
 } from '@ant-design/icons';
 
 const { Header, Content, Footer } = Layout;
@@ -20,14 +21,14 @@ export default class CadastroProdutos extends Component {
     valor: 0,
     id: 0,
     open: false,
-      idM: 0,
-      nomeM: '',
-      valorM: 0
+    idM: 0,
+    nomeM: '',
+    valorM: 0
   }
 
 
   componentDidMount() {
-    axios.get(`https://gestor-fiscal.herokuapp.com/api/produtos`)
+    axios.get(`https://gestor-fiscal.herokuapp.com/api/produtos/`)
       .then(res => {
         const data = res.data;
         this.setState({ data });
@@ -35,7 +36,7 @@ export default class CadastroProdutos extends Component {
   }
 
   cadastrarProduto = () => {
-    axios.post(`https://gestor-fiscal.herokuapp.com/api/produtos`, {
+    axios.post(`https://gestor-fiscal.herokuapp.com/api/produtos/`, {
       nome: this.state.nome,
       valor: this.state.valor,
 
@@ -46,7 +47,7 @@ export default class CadastroProdutos extends Component {
   }
 
   atualizaTabela = () => {
-    axios.get(`https://gestor-fiscal.herokuapp.com/api/produtos`)
+    axios.get(`https://gestor-fiscal.herokuapp.com/api/produtos/`)
       .then(res => {
         const data = res.data;
         this.setState({ data });
@@ -55,10 +56,10 @@ export default class CadastroProdutos extends Component {
   }
 
   alteraProduto = () => {
-    axios.put(`https://gestor-fiscal.herokuapp.com/api/produtos`, {
+    axios.put(`https://gestor-fiscal.herokuapp.com/api/produtos/`, {
       id: this.state.id,
       nome: this.state.nome,
-      valor: this.state.valor,
+      valor: this.state.valor
     })
       .then(res => {
         this.setState({ open: false });
@@ -122,22 +123,20 @@ export default class CadastroProdutos extends Component {
       dataIndex: 'valor',
       key: 'valor',
     }, {
-      title: 'Action',
-      key: 'action',
+      title: 'Ação',
+      key: 'acao',
       render: (record, index) => < div className="btn-wrap"
         key={index} >
-        <Button type="primary" danger onClick={() => this.deleteRow(record.id)}>
-          <Space size="small" >
+        <Space size="small" >
+          <Button type="primary" danger onClick={() => this.deleteRow(record.id)}>
             Apagar
             <DeleteOutlined />
-          </Space>
-        </Button>
-
-        <Button type="primary" onClick={() => this.editRow(record.id, record.nome, record.valor)}>
-          <Space size="small" >
+          </Button>
+          <Button type="primary" onClick={() => this.editRow(record.id, record.nome, record.valor)}>
+            <EditOutlined />
             Editar
-          </Space>
-        </Button>
+          </Button>
+        </Space>
       </div >
 
     }
@@ -169,30 +168,30 @@ export default class CadastroProdutos extends Component {
             >
               <Form>
                 <Form.Item name="id-produto" onChange={this.handleChangeId} label="Id do produto">
-                  <Input type={"number"} defaultValue={this.state.idM}/>
+                  <Input type={"number"} defaultValue={this.state.idM} />
                 </Form.Item>
                 <Form.Item name="nome-produto" onChange={this.handleChangeName} label="Nome do produto">
-                  <Input defaultValue={this.state.nomeM}/>
+                  <Input defaultValue={this.state.nomeM} />
                 </Form.Item>
                 <Form.Item name="valor-produto" onChange={this.handleChangeValue} label="Valor">
-                  <Input type={"number"}  defaultValue={this.state.valorM}/>
+                  <Input type={"number"} defaultValue={this.state.valorM} />
                 </Form.Item>
                 <Form.Item>
                   <Button type="primary" htmlType="submit" onClick={this.alteraProduto}>
                     <SaveFilled />Atualiza Valor
                   </Button>
-                </Form.Item>  
+                </Form.Item>
               </Form>
             </Modal>
 
 
 
-            <h1>Produtos Cadastrados</h1>
+            <h1 className="titulo-bloco">Produtos Cadastrados</h1>
             <Table className="tabelaCadastrados" dataSource={this.state.data} rowKey="id" columns={this.columns} pagination={{ pageSize: 7, position: ['bottomCenter'] }} />;
 
-            <h1>Cadastrar Novo Produto</h1>
+            <h1 className="titulo-bloco">Cadastrar Novo Produto</h1>
 
-            <Form>
+            <Form className="form-cadastrar-produto">
               <Form.Item name="nome-produto" onChange={this.handleChangeName} label="Nome do produto">
                 <Input />
               </Form.Item>
