@@ -3,10 +3,12 @@ import axios from 'axios';
 import 'antd/dist/antd.min.css';
 import Menu from "../components/Menu/Menu";
 import FooterContent from "../components/FooterContent/FooterContent";
-import { Layout, Breadcrumb, Table, Form, Input, Button, Space, Modal } from "antd";
+import { Layout, Breadcrumb, Table, Button, Space } from "antd";
 import { Link } from "react-router-dom";
+import Formulario from "../components/FormularioCadastro/FormularioCadastro";
+import ModalCadastro from "../components/ModalCadastro/ModalCadastro";
+import TituloCentral from "../components/TituloCentral/TituloCentral";
 import {
-  SaveFilled,
   DeleteOutlined,
   EditOutlined,
 } from '@ant-design/icons';
@@ -21,9 +23,9 @@ export default class CadastroProdutos extends Component {
     valor: 0,
     id: 0,
     open: false,
-    idM: 0,
-    nomeM: '',
-    valorM: 0
+    idModal: 0,
+    nomeModal: '',
+    valorModal: 0
   }
 
 
@@ -39,7 +41,6 @@ export default class CadastroProdutos extends Component {
     axios.post(`https://gestor-fiscal.herokuapp.com/api/produtos`, {
       nome: this.state.nome,
       valor: this.state.valor,
-
     })
       .then(res => {
         this.atualizaTabela();
@@ -62,13 +63,11 @@ export default class CadastroProdutos extends Component {
       valor: this.state.valor
     })
       .then(res => {
-        this.setState({ open: false });
+        this.fechaModal();
         this.atualizaTabela();
       }
       )
   }
-
-
 
   handleChangeName = (event) => {
     this.setState({
@@ -89,7 +88,7 @@ export default class CadastroProdutos extends Component {
     });
   }
 
-  deleteRow = (id) => {
+  deletaProduto = (id) => {
     axios.delete(`https://gestor-fiscal.herokuapp.com/api/produtos` + id)
       .then(res => {
         this.atualizaTabela();
@@ -97,17 +96,20 @@ export default class CadastroProdutos extends Component {
       )
   };
 
-  editRow = (idR, nomeR, valorR) => {
+  editaLinhaModal = (idRecord, nomeRecord, valorRecord) => {
     this.setState({ open: true });
-    this.setState({ idM: idR });
-    this.setState({ nomeM: nomeR });
-    this.setState({ valorM: valorR });
-    this.setState({ id: idR });
-    this.setState({ nome: nomeR });
-    this.setState({ valor: valorR });
-
+    this.setState({ idModal: idRecord });
+    this.setState({ nomeModal: nomeRecord });
+    this.setState({ valorModal: valorRecord });
+    this.setState({ id: idRecord });
+    this.setState({ nome: nomeRecord });
+    this.setState({ valor: valorRecord });
     this.atualizaTabela();
   };
+
+  fechaModal = () => {
+    this.setState({ open: false });
+  }
 
 
 
@@ -132,11 +134,11 @@ export default class CadastroProdutos extends Component {
       render: (record, index) => < div className="btn-wrap"
         key={index} >
         <Space size="small" >
-          <Button type="primary" danger onClick={() => this.deleteRow(record.id)}>
+          <Button type="primary" danger onClick={() => this.deletaProduto(record.id)}>
             Apagar
             <DeleteOutlined />
           </Button>
-          <Button type="primary" onClick={() => this.editRow(record.id, record.nome, record.valor)}>
+          <Button type="primary" onClick={() => this.editaLinhaModal(record.id, record.nome, record.valor)}>
             <EditOutlined />
             Editar
           </Button>
@@ -162,55 +164,15 @@ export default class CadastroProdutos extends Component {
               <Breadcrumb.Item><Link to="/cadastro-produtos">Cadastro Produtos</Link></Breadcrumb.Item>
             </Breadcrumb>
 
-            <Modal
-              title="Modal"
-              open={this.state.open}
-              onCancel={() => this.setState({ open: false })}
-              onOk={() => this.alteraProduto}
-              footer={null}
-              destroyOnClose={true}
-            >
-              <Form>
-                <Form.Item name="id-produto" onChange={this.handleChangeId} label="Id do produto">
-                  <Input type={"number"} defaultValue={this.state.idM} />
-                </Form.Item>
-                <Form.Item name="nome-produto" onChange={this.handleChangeName} label="Nome do produto">
-                  <Input defaultValue={this.state.nomeM} />
-                </Form.Item>
-                <Form.Item name="valor-produto" onChange={this.handleChangeValue} label="Valor">
-                  <Input type={"number"} defaultValue={this.state.valorM} />
-                </Form.Item>
-                <Form.Item>
-                  <Button type="primary" htmlType="submit" onClick={this.alteraProduto}>
-                    <SaveFilled />Atualiza Valor
-                  </Button>
-                </Form.Item>
-              </Form>
-            </Modal>
+            <ModalCadastro open={this.state.open} handleChangeId={this.handleChangeId} handleChangeName={this.handleChangeName} 
+            handleChangeValue={this.handleChangeValue} idModal={this.state.idModal} nomeModal={this.state.nomeModal}
+            valorModal={this.state.valorModal} alteraProduto={this.alteraProduto} fechaModal={this.fechaModal} />
 
-
-
-            <h1 className="titulo-bloco">Produtos Cadastrados</h1>
+            <TituloCentral titulo="Produtos Cadastrados" />
             <Table className="tabelaCadastrados" dataSource={this.state.data} rowKey="id" columns={this.columns} pagination={{ pageSize: 7, position: ['bottomCenter'] }} />;
 
-            <h1 className="titulo-bloco">Cadastrar Novo Produto</h1>
-
-            <Form className="form-cadastrar-produto">
-              <Form.Item name="nome-produto" onChange={this.handleChangeName} label="Nome do produto">
-                <Input />
-              </Form.Item>
-              <Form.Item name="valor-produto" onChange={this.handleChangeValue} label="Valor">
-                <Input type={"number"} />
-              </Form.Item>
-              <Form.Item>
-                <Button type="primary" htmlType="submit" onClick={this.cadastrarProduto}>
-                  <SaveFilled />Salvar
-                </Button>
-              </Form.Item>
-            </Form>
-
-
-
+            <TituloCentral titulo="Cadastrar Novo Produto" />
+            <Formulario cadastrarProduto={this.cadastrarProduto} handleChangeName={this.handleChangeName} handleChangeValue={this.handleChangeValue}/>
           </Content>
 
           <Footer className="footer">

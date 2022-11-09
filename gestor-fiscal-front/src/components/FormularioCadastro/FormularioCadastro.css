@@ -1,0 +1,27 @@
+.form-cadastrar-produto{
+    width: 40%;
+    background-color: #ffff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: 0px auto !important;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 50px  !important;
+  }
+  
+  .form-cadastrar-produto input{
+    margin: 20px 0px 20px 0px;
+    width: 90%;
+  }
+  
+  .form-cadastrar-produto label{
+    margin: 20px;
+  }
+  
+  .form-cadastrar-produto button{
+    margin: 10px;
+    width: 90%;
+  }
+  
+  
