@@ -28,7 +28,7 @@ export default class CadastroProdutos extends Component {
 
 
   componentDidMount() {
-    axios.get(`https://gestor-fiscal.herokuapp.com/api/produtos/`)
+    axios.get(`http://localhost:8080/api/produtos/`)
       .then(res => {
         const data = res.data;
         this.setState({ data });
@@ -36,7 +36,7 @@ export default class CadastroProdutos extends Component {
   }
 
   cadastrarProduto = () => {
-    axios.post(`https://gestor-fiscal.herokuapp.com/api/produtos/`, {
+    axios.post(`http://localhost:8080/api/produtos/`, {
       nome: this.state.nome,
       valor: this.state.valor,
 
@@ -47,7 +47,7 @@ export default class CadastroProdutos extends Component {
   }
 
   atualizaTabela = () => {
-    axios.get(`https://gestor-fiscal.herokuapp.com/api/produtos/`)
+    axios.get(`http://localhost:8080/api/produtos/`)
       .then(res => {
         const data = res.data;
         this.setState({ data });
@@ -56,7 +56,7 @@ export default class CadastroProdutos extends Component {
   }
 
   alteraProduto = () => {
-    axios.put(`https://gestor-fiscal.herokuapp.com/api/produtos/`, {
+    axios.put(`http://localhost:8080/api/produtos/`, {
       id: this.state.id,
       nome: this.state.nome,
       valor: this.state.valor
@@ -85,23 +85,27 @@ export default class CadastroProdutos extends Component {
 
   handleChangeId = (event) => {
     this.setState({
-      id: event.target.value,
+      id: event.target.value
     });
   }
 
   deleteRow = (id) => {
-    axios.delete(`https://gestor-fiscal.herokuapp.com/api/produtos/` + id)
+    axios.delete(`http://localhost:8080/api/produtos/` + id)
       .then(res => {
         this.atualizaTabela();
       }
       )
   };
 
-  editRow = (id, nome, valor) => {
+  editRow = (idR, nomeR, valorR) => {
     this.setState({ open: true });
-    this.setState({ idM: id });
-    this.setState({ nomeM: nome });
-    this.setState({ valorM: valor });
+    this.setState({ idM: idR });
+    this.setState({ nomeM: nomeR });
+    this.setState({ valorM: valorR });
+    this.setState({ id: idR });
+    this.setState({ nome: nomeR });
+    this.setState({ valor: valorR });
+
     this.atualizaTabela();
   };
 
