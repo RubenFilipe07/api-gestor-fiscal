@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Sobre from './pages/Sobre';
 import Contato from './pages/Contato';
 import CadastroProdutos from './pages/CadastroProdutos';
-import CadastrarIcms from './pages/CadastrarIcms';
+import CadastroIcms from './pages/CadastroIcms';
 import CalculoIcms from './pages/CalculoIcmsEstadual';
 
 const App = () => (
@@ -14,7 +14,7 @@ const App = () => (
       <Route path='/sobre' element={<Sobre/>}></Route>
       <Route path='/contato' element={<Contato/>}></Route>
       <Route path='/cadastro-produtos' element={<CadastroProdutos/>}></Route>
-      <Route path='/cadastrar-icms' element={<CadastrarIcms/>}></Route>
+      <Route path='/cadastrar-icms' element={<CadastroIcms/>}></Route>
       <Route path='/calculo-icms' element={<CalculoIcms/>}></Route>
     </Routes>
   </BrowserRouter>
