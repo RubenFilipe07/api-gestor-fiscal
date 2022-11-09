@@ -16,7 +16,7 @@
         "source" : "**",
         "headers" : [{
           "key" : "Cache-Control",
-          "value" : "max-age=604800"
+          "value" : "max-age=14400"
         }]
       }]
     }
