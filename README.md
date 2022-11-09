@@ -26,14 +26,19 @@ utiliza o ant design. Tem como objetivo servir de ferramenta para calcular os im
 
 <h3>Links</h3>
 <ul>
-    <li><a href="https://gestor-fiscal.web.app/">Aplicação</a></li>
-    <li><a href="https://gestor-fiscal.herokuapp.com/swagger-ui.html">API</a></li>
+    <li><a href="https://gestor-fiscal.web.app/">Aplicação -> gestor-fiscal.web.app</a></li>
+    <li><a href="https://gestor-fiscal.herokuapp.com/swagger-ui.html">API -> https://gestor-fiscal.herokuapp.com/swagger-ui.html</a></li>
 </ul>
 
 <h3>Demonstração</h3>
-<img width="800" src="https://user-images.githubusercontent.com/53026536/200506717-d0f78b11-46bd-4648-9d7b-32c6c97ddeb3.png"/>
-<img width="800" src="https://user-images.githubusercontent.com/53026536/200507065-316dc264-2cfe-459b-b3ee-bc32dfe7b81a.png"/>
-<img width="800" src="https://user-images.githubusercontent.com/53026536/200507044-db1e5c59-0c97-4f97-a708-a14f7183bf3e.png"/>
+<a href="https://gestor-fiscal.herokuapp.com/swagger-ui.html">
+  <img width="800" src="https://user-images.githubusercontent.com/53026536/200506717-d0f78b11-46bd-4648-9d7b-32c6c97ddeb3.png"/>
+</a>
+
+<a href="https://gestor-fiscal.web.app/">
+  <img width="800" src="https://user-images.githubusercontent.com/53026536/200773248-180e6e4a-d92b-465f-a3e9-57ba9bd0bb50.png"/>
+</a>
+
 
 <h3>Ferramentas utilizadas</h3>
 <ul>
