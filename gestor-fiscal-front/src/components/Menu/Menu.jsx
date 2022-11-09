@@ -31,7 +31,9 @@ import {
 
 const menu = () => (
     <div className="menu"> 
-        <img className="logo-menu" src={icon} alt="Icone" width={50} height={50}/>
+        <Link to="/">
+            <img className="logo-menu" src={icon} alt="Icone" width={50} height={50}/>
+        </Link>
         <h1 className="titulo-menu"><Link to="/">Gestor Fiscal</Link></h1>
         <Menu items={menuItems} mode="horizontal" theme="dark" />
     </div>
