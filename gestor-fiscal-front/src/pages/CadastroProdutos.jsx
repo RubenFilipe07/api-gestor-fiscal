@@ -20,10 +20,12 @@ export default class CadastroProdutos extends Component {
   state = {
     data: [],
     nome: '',
+    sigla: '',
     valor: 0,
     id: 0,
     open: false,
     idModal: 0,
+    siglaModal: '',
     nomeModal: '',
     valorModal: 0
   }
@@ -37,9 +39,10 @@ export default class CadastroProdutos extends Component {
       })
   }
 
-  cadastrarProduto = () => {
+  cadastraItem = () => {
     axios.post(`https://gestor-fiscal.herokuapp.com/api/produtos`, {
       nome: this.state.nome,
+      sigla: this.state.sigla,
       valor: this.state.valor,
     })
       .then(res => {
@@ -56,10 +59,11 @@ export default class CadastroProdutos extends Component {
       )
   }
 
-  alteraProduto = () => {
+  alteraItem = () => {
     axios.put(`https://gestor-fiscal.herokuapp.com/api/produtos`, {
       id: this.state.id,
       nome: this.state.nome,
+      sigla: this.state.sigla,
       valor: this.state.valor
     })
       .then(res => {
@@ -88,8 +92,14 @@ export default class CadastroProdutos extends Component {
     });
   }
 
+  handleChangeSigla = (event) => {
+    this.setState({
+      sigla: event.target.value
+    });
+  }
+
   deletaProduto = (id) => {
-    axios.delete(`https://gestor-fiscal.herokuapp.com/api/produtos` + id)
+    axios.delete(`https://gestor-fiscal.herokuapp.com/api/produtos/` + id)
       .then(res => {
         this.atualizaTabela();
       }
@@ -166,13 +176,13 @@ export default class CadastroProdutos extends Component {
 
             <ModalCadastro open={this.state.open} handleChangeId={this.handleChangeId} handleChangeName={this.handleChangeName} 
             handleChangeValue={this.handleChangeValue} idModal={this.state.idModal} nomeModal={this.state.nomeModal}
-            valorModal={this.state.valorModal} alteraProduto={this.alteraProduto} fechaModal={this.fechaModal} />
+            valorModal={this.state.valorModal} alteraItem={this.alteraItem} fechaModal={this.fechaModal} />
 
             <TituloCentral titulo="Produtos Cadastrados" />
             <Table className="tabelaCadastrados" dataSource={this.state.data} rowKey="id" columns={this.columns} pagination={{ pageSize: 7, position: ['bottomCenter'] }} />;
 
             <TituloCentral titulo="Cadastrar Novo Produto" />
-            <Formulario cadastrarProduto={this.cadastrarProduto} handleChangeName={this.handleChangeName} handleChangeValue={this.handleChangeValue}/>
+            <Formulario cadastraItem={this.cadastraItem} handleChangeName={this.handleChangeName} handleChangeValue={this.handleChangeValue} campoNomeFormulario="Nome do produto:"/>
           </Content>
 
           <Footer className="footer">

@@ -5,15 +5,20 @@ import './FormularioCadastro.css'
 
   
 const formulario = (props) => (
-     <Form className="form-cadastrar-produto">
-              <Form.Item name="nome-produto" onChange={props.handleChangeName} label="Nome do produto">
+     <Form className="form-cadastrar-item">
+              <Form.Item name="nome-item" onChange={props.handleChangeName} label={props.campoNomeFormulario}>
                 <Input />
               </Form.Item>
-              <Form.Item name="valor-produto" onChange={props.handleChangeValue} label="Valor">
+              {props.campoNomeFormulario === "Nome do Estado:" ? (
+                <Form.Item name="sigla-estado" onChange={props.handleChangeSigla} label="Sigla">
+                  <Input />
+                </Form.Item>
+              ) : null}
+              <Form.Item name="valor-item" onChange={props.handleChangeValue} label="Valor">
                 <Input type={"number"} />
               </Form.Item>
               <Form.Item>
-                <Button type="primary" htmlType="submit" onClick={props.cadastrarProduto}>
+                <Button type="primary" htmlType="submit" onClick={props.cadastraItem}>
                   <SaveFilled />Salvar
                 </Button>
               </Form.Item>

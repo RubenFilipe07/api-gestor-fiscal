@@ -15,7 +15,7 @@ import {
 
 const { Header, Content, Footer } = Layout;
 
-export default class CadastroProdutos extends Component {
+export default class CadastroIcms extends Component {
 
   state = {
     data: [],
@@ -37,7 +37,7 @@ export default class CadastroProdutos extends Component {
       })
   }
 
-  cadastrarProduto = () => {
+  cadastrarItem = () => {
     axios.post(`https://gestor-fiscal.herokuapp.com/api/icms`, {
       nome: this.state.nome,
       valor: this.state.valor,
@@ -56,7 +56,7 @@ export default class CadastroProdutos extends Component {
       )
   }
 
-  alteraProduto = () => {
+  alteraItem = () => {
     axios.put(`https://gestor-fiscal.herokuapp.com/api/icms`, {
       id: this.state.id,
       nome: this.state.nome,
@@ -88,8 +88,8 @@ export default class CadastroProdutos extends Component {
     });
   }
 
-  deletaProduto = (id) => {
-    axios.delete(`https://gestor-fiscal.herokuapp.com/api/icms` + id)
+  deletaIcms = (id) => {
+    axios.delete(`https://gestor-fiscal.herokuapp.com/api/icms/` + id)
       .then(res => {
         this.atualizaTabela();
       }
@@ -140,7 +140,7 @@ export default class CadastroProdutos extends Component {
       render: (record, index) => < div className="btn-wrap"
         key={index} >
         <Space size="small" >
-          <Button type="primary" danger onClick={() => this.deletaProduto(record.id)}>
+          <Button type="primary" danger onClick={() => this.deletaIcms(record.id)}>
             Apagar
             <DeleteOutlined />
           </Button>
@@ -167,18 +167,18 @@ export default class CadastroProdutos extends Component {
           <Content className="content">
             <Breadcrumb style={{ margin: '16px' }}>
               <Breadcrumb.Item><Link to="/">Início</Link></Breadcrumb.Item>
-              <Breadcrumb.Item><Link to="/cadastro-icms">Cadastro Produtos</Link></Breadcrumb.Item>
+              <Breadcrumb.Item><Link to="/cadastro-icms">Cadastro Icms</Link></Breadcrumb.Item>
             </Breadcrumb>
 
             <ModalCadastro open={this.state.open} handleChangeId={this.handleChangeId} handleChangeName={this.handleChangeName} 
             handleChangeValue={this.handleChangeValue} idModal={this.state.idModal} nomeModal={this.state.nomeModal}
-            valorModal={this.state.valorModal} alteraProduto={this.alteraProduto} fechaModal={this.fechaModal} />
+            valorModal={this.state.valorModal} alteraItem={this.alteraItem} fechaModal={this.fechaModal} />
 
             <TituloCentral titulo="Icms Cadastrados" />
             <Table className="tabelaCadastrados" dataSource={this.state.data} rowKey="id" columns={this.columns} pagination={{ pageSize: 7, position: ['bottomCenter'] }} />;
 
             <TituloCentral titulo="Cadastrar Novo Icms" />
-            <Formulario cadastrarProduto={this.cadastrarProduto} handleChangeName={this.handleChangeName} handleChangeValue={this.handleChangeValue}/>
+            <Formulario cadastrarItem={this.cadastrarItem} handleChangeName={this.handleChangeName} handleChangeValue={this.handleChangeValue} campoNomeFormulario="Nome do Estado:"/>
           </Content>
 
           <Footer className="footer">

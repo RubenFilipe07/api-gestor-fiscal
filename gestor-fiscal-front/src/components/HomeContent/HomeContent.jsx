@@ -16,7 +16,7 @@ const homeContent = () => (
                         </Card>
                     </Col>
                     <Col span={5}>
-                        <Card title="Icms estadual" bordered={false}>
+                        <Card title="Cadastro Icms" bordered={false}>
                              <p className="card-text">Cadastre o valor do ICMS de acordo com as alíquotas de cada estado.</p>       
                             <Button type="primary" size="large" shape="round" block="true">
                                 <Link to="/cadastrar-icms">Cadastrar</Link>
@@ -24,8 +24,8 @@ const homeContent = () => (
                         </Card>
                     </Col>
                     <Col span={5}>
-                        <Card title="Icms interestadual" bordered={false}>
-                            <p className="card-text">Calcule o valor do ICMS de com os valores dos produtos cadastrados e a alíquota estadual</p>
+                        <Card title="Cáculo Estadual" bordered={false}>
+                            <p className="card-text">Calcule o valor do ICMS de com os valores dos produtos cadastrados e a alíquota estadual.</p>
                             <Button type="primary" size="large" shape="round" block="true">
                                 <Link to="/calculo-icms">Calcular</Link>
                             </Button>
