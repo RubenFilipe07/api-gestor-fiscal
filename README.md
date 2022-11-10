@@ -1,7 +1,7 @@
 # Gestor fiscal
-Este é um projeto baseado numa API REST feita com <a href="https://spring.io/projects/spring-boot">Spring</a>, banco de dados
+Este é um projeto CRUD baseado numa API REST feita com <a href="https://spring.io/projects/spring-boot">Spring</a>, banco de dados
 <a href="https://www.postgresql.org/">PostgreSql</a> e uma aplicação <a href="https://reactjs.org/">React.js</a> que manipula os dados via axios e
-utiliza o ant design. Tem como objetivo servir de ferramenta para calcular os impostos sobre os produtos cadastrados.
+utiliza a biblioteca ant design. Tem como objetivo servir de ferramenta para calcular os impostos sobre os produtos cadastrados.
 
 <h3>Como instalar o projeto</h3>
 
