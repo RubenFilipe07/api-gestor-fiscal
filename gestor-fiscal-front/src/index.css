@@ -16,7 +16,25 @@ body {
   background-color: rgb(235, 235, 235) !important;
 }
 
-.tabelaCadastrados{
-  width: 90%;
+.tabelaCadastrados, .ant-skeleton{
+  width: 90% !important;
   margin: 0px auto;
+}
+
+.ant-spin {
+  margin: 100px auto 0px auto !important;
+  display: block !important;
+}
+
+.btnTentarNovamente{
+  margin: 15px auto !important;
+  display: block !important;
+}
+
+.ant-alert{
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50% !important;
+  position: absolute !important;
 }

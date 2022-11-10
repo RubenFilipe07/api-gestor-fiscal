@@ -3,13 +3,14 @@ import axios from 'axios';
 import 'antd/dist/antd.min.css';
 import Menu from "../components/Menu/Menu";
 import FooterContent from "../components/FooterContent/FooterContent";
-import { Layout, Breadcrumb, Table, Button } from "antd";
+import { Layout, Breadcrumb, Table, Button, Skeleton, Alert, Spin } from "antd";
 import { Link } from "react-router-dom";
 import TituloCentral from "../components/TituloCentral/TituloCentral";
 import ModalCalculo from "../components/ModalCalculo/ModalCalculo";
 
 import {
-    CalculatorOutlined 
+    CalculatorOutlined,
+    ReloadOutlined 
 } from '@ant-design/icons';
 
 const { Header, Content, Footer } = Layout;
@@ -28,6 +29,7 @@ export default class CalculoIcmsEstadual extends Component {
     siglaModal: '',
     nomeModal: '',
     valorModal: 0,
+    temErro: false,
 }
 
 
@@ -36,6 +38,9 @@ export default class CalculoIcmsEstadual extends Component {
       .then(res => {
         const data = res.data;
         this.setState({ data });
+      })
+      .catch(error => {
+        this.setState({ temErro: true });
       })
   }
 
@@ -55,8 +60,11 @@ export default class CalculoIcmsEstadual extends Component {
       .then(res => {
         const data = res.data;
         this.setState({ data });
-      }
-      )
+        this.setState({ temErro: false });
+      }).catch(error => {
+        console.log(error);
+        this.setState({ temErro: true });
+      })
   }
 
   alteraItem = () => {
@@ -111,10 +119,6 @@ export default class CalculoIcmsEstadual extends Component {
   }
 
 
-
-
-
-
   fechaModal = () => {
     this.setState({ open: false });
   }
@@ -153,6 +157,7 @@ export default class CalculoIcmsEstadual extends Component {
     return (
       <Fragment>
         <Layout>
+        {this.state.temErro ? <Alert message="Não foi possível obter os dados da API" type="error" showIcon closable /> : null}
           <Header>
             <Menu />
           </Header>
@@ -169,7 +174,20 @@ export default class CalculoIcmsEstadual extends Component {
             valorModal={this.state.valorModal} fechaModal={this.fechaModal} valorSelecionado={this.state.valor}/>
 
             <TituloCentral titulo="Produtos Cadastrados" />
-            <Table className="tabelaCadastrados" dataSource={this.state.data} rowKey="id" columns={this.columns} pagination={{ pageSize: 7, position: ['bottomCenter'] }} />;
+            {this.state.data.length === 0 ? (
+              <>
+                 <Skeleton active/>
+              </>
+              ) : (
+                <Table className="tabelaCadastrados" dataSource={this.state.data} rowKey="id" columns={this.columns} pagination={{ pageSize: 7, position: ['bottomCenter'] }} />
+              )}
+
+            {this.state.data.length === 0 ? (
+              <>
+                <Spin tip="Carregando dados da API..." size="large" style={{ fontSize: 24 }} />
+                <Button className="btnTentarNovamente" icon={<ReloadOutlined />} onClick={this.atualizaTabela}>Tentar novamente</Button>
+              </>
+            ) : ( null )}
 
     
           </Content>

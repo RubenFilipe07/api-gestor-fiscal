@@ -3,7 +3,7 @@ import axios from 'axios';
 import 'antd/dist/antd.min.css';
 import Menu from "../components/Menu/Menu";
 import FooterContent from "../components/FooterContent/FooterContent";
-import { Layout, Breadcrumb, Table, Button, Space } from "antd";
+import { Layout, Breadcrumb, Table, Button, Space, Skeleton, Alert, Spin } from "antd";
 import { Link } from "react-router-dom";
 import Formulario from "../components/FormularioCadastro/FormularioCadastro";
 import ModalCadastro from "../components/ModalCadastro/ModalCadastro";
@@ -11,6 +11,7 @@ import TituloCentral from "../components/TituloCentral/TituloCentral";
 import {
   DeleteOutlined,
   EditOutlined,
+  ReloadOutlined
 } from '@ant-design/icons';
 
 const { Header, Content, Footer } = Layout;
@@ -35,6 +36,9 @@ export default class CadastroIcms extends Component {
         const data = res.data;
         this.setState({ data });
       })
+      .catch(error => {
+        this.setState({ temErro: true });
+      })
   }
 
   cadastrarItem = () => {
@@ -52,8 +56,12 @@ export default class CadastroIcms extends Component {
       .then(res => {
         const data = res.data;
         this.setState({ data });
+        this.setState({ temErro: false });
       }
-      )
+      ).catch(error => {
+        console.log(error);
+        this.setState({ temErro: true });
+      })
   }
 
   alteraItem = () => {
@@ -160,6 +168,7 @@ export default class CadastroIcms extends Component {
     return (
       <Fragment>
         <Layout>
+          {this.state.temErro ? <Alert message="Não foi possível obter os dados da API" type="error" showIcon closable /> : null}
           <Header>
             <Menu />
           </Header>
@@ -175,10 +184,22 @@ export default class CadastroIcms extends Component {
             valorModal={this.state.valorModal} alteraItem={this.alteraItem} fechaModal={this.fechaModal} />
 
             <TituloCentral titulo="Icms Cadastrados" />
-            <Table className="tabelaCadastrados" dataSource={this.state.data} rowKey="id" columns={this.columns} pagination={{ pageSize: 7, position: ['bottomCenter'] }} />;
 
+            {this.state.data.length === 0 ? (
+              <Skeleton active />
+            ) : (
+              <Table className="tabelaCadastrados" dataSource={this.state.data} rowKey="id" columns={this.columns} pagination={{ pageSize: 7, position: ['bottomCenter'] }} />
+            )}
+            
             <TituloCentral titulo="Cadastrar Novo Icms" />
-            <Formulario cadastrarItem={this.cadastrarItem} handleChangeName={this.handleChangeName} handleChangeValue={this.handleChangeValue} campoNomeFormulario="Nome do Estado:"/>
+            {this.state.data.length === 0 ? (
+              <>
+                <Spin tip="Carregando dados da API..." size="large" style={{ fontSize: 24 }} />
+                <Button className="btnTentarNovamente" icon={<ReloadOutlined />} onClick={this.atualizaTabela}>Tentar novamente</Button>
+              </>
+            ) : (
+              <Formulario cadastrarItem={this.cadastrarItem} handleChangeName={this.handleChangeName} handleChangeValue={this.handleChangeValue} campoNomeFormulario="Nome do Estado:"/>
+            )}
           </Content>
 
           <Footer className="footer">

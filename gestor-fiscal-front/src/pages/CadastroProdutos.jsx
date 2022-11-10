@@ -3,7 +3,7 @@ import axios from 'axios';
 import 'antd/dist/antd.min.css';
 import Menu from "../components/Menu/Menu";
 import FooterContent from "../components/FooterContent/FooterContent";
-import { Layout, Breadcrumb, Table, Button, Space } from "antd";
+import { Layout, Breadcrumb, Table, Button, Space, Skeleton, Alert, Spin } from "antd";
 import { Link } from "react-router-dom";
 import Formulario from "../components/FormularioCadastro/FormularioCadastro";
 import ModalCadastro from "../components/ModalCadastro/ModalCadastro";
@@ -11,6 +11,7 @@ import TituloCentral from "../components/TituloCentral/TituloCentral";
 import {
   DeleteOutlined,
   EditOutlined,
+  ReloadOutlined
 } from '@ant-design/icons';
 
 const { Header, Content, Footer } = Layout;
@@ -27,7 +28,8 @@ export default class CadastroProdutos extends Component {
     idModal: 0,
     siglaModal: '',
     nomeModal: '',
-    valorModal: 0
+    valorModal: 0,
+    temErro: false,
   }
 
 
@@ -36,6 +38,9 @@ export default class CadastroProdutos extends Component {
       .then(res => {
         const data = res.data;
         this.setState({ data });
+      }).catch(error => {
+        console.log(error);
+        this.setState({ temErro: true });
       })
   }
 
@@ -55,8 +60,11 @@ export default class CadastroProdutos extends Component {
       .then(res => {
         const data = res.data;
         this.setState({ data });
-      }
-      )
+        this.setState({ temErro: false });
+      }).catch(error => {
+        console.log(error);
+        this.setState({ temErro: true });
+      })
   }
 
   alteraItem = () => {
@@ -164,6 +172,7 @@ export default class CadastroProdutos extends Component {
     return (
       <Fragment>
         <Layout>
+          {this.state.temErro ? <Alert message="Não foi possível obter os dados da API" type="error" showIcon closable /> : null}
           <Header>
             <Menu />
           </Header>
@@ -174,15 +183,31 @@ export default class CadastroProdutos extends Component {
               <Breadcrumb.Item><Link to="/cadastro-produtos">Cadastro Produtos</Link></Breadcrumb.Item>
             </Breadcrumb>
 
-            <ModalCadastro open={this.state.open} handleChangeId={this.handleChangeId} handleChangeName={this.handleChangeName} 
-            handleChangeValue={this.handleChangeValue} idModal={this.state.idModal} nomeModal={this.state.nomeModal}
-            valorModal={this.state.valorModal} alteraItem={this.alteraItem} fechaModal={this.fechaModal} />
+
+            <ModalCadastro open={this.state.open} handleChangeId={this.handleChangeId} handleChangeName={this.handleChangeName}
+              handleChangeValue={this.handleChangeValue} idModal={this.state.idModal} nomeModal={this.state.nomeModal}
+              valorModal={this.state.valorModal} alteraItem={this.alteraItem} fechaModal={this.fechaModal} />
+
 
             <TituloCentral titulo="Produtos Cadastrados" />
-            <Table className="tabelaCadastrados" dataSource={this.state.data} rowKey="id" columns={this.columns} pagination={{ pageSize: 7, position: ['bottomCenter'] }} />;
+
+            {this.state.data.length === 0 ? (
+              <Skeleton active />
+            ) : (
+              <Table className="tabelaCadastrados" dataSource={this.state.data} rowKey="id" columns={this.columns} pagination={{ pageSize: 7, position: ['bottomCenter'] }} />
+            )}
 
             <TituloCentral titulo="Cadastrar Novo Produto" />
-            <Formulario cadastraItem={this.cadastraItem} handleChangeName={this.handleChangeName} handleChangeValue={this.handleChangeValue} campoNomeFormulario="Nome do produto:"/>
+            {this.state.data.length === 0 ? (
+              <>
+                <Spin tip="Carregando dados da API..." size="large" style={{ fontSize: 24 }} />
+                <Button className="btnTentarNovamente" icon={<ReloadOutlined />} onClick={this.atualizaTabela}>Tentar novamente</Button>
+              </>
+            ) : (
+              <Formulario cadastraItem={this.cadastraItem} handleChangeName={this.handleChangeName} handleChangeValue={this.handleChangeValue} campoNomeFormulario="Nome do produto:" />
+            )}
+
+
           </Content>
 
           <Footer className="footer">
