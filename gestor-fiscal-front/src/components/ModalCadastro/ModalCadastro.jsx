@@ -6,7 +6,7 @@ import './ModalCadastro.css'
 
 const modalCadastro = (props) => (
   <Modal
-  title="Modal"
+  title="Cadastro de produto"
   open={props.open}
   onCancel={props.fechaModal}
   footer={null}
