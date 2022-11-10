@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Input, Button, Modal, Select } from "antd";
-import { SaveFilled } from "@ant-design/icons";
+import { CalculatorOutlined } from "@ant-design/icons";
 import './ModalCalculo.css'
 import axios from "axios";
 import { useState } from "react";
@@ -30,14 +30,18 @@ const ModalCalculo = (props) => {
   }
 
   const calcularIcms = () => {
-  var porcentagem = icmsSelecionado / 100;
-  var acrecimo = props.valorModal * porcentagem;
-  var resultadoFinal = props.valorModal + acrecimo;
-  resultadoFinal = resultadoFinal.toLocaleString ('pt-BR', {style: 'currency', currency: 'BRL'});
-  acrecimo = acrecimo.toLocaleString ('pt-BR', {style: 'currency', currency: 'BRL'});
-  setAcrecimo(acrecimo);
-  setResultado(resultadoFinal);
-  setMostrarResultado(true);
+  if (icmsSelecionado === 0) {
+    alert("Selecione um ICMS");
+  } else {
+    var porcentagem = icmsSelecionado / 100;
+    var acrecimo = props.valorModal * porcentagem;
+    var resultadoFinal = props.valorModal + acrecimo;
+    resultadoFinal = resultadoFinal.toLocaleString ('pt-BR', {style: 'currency', currency: 'BRL'});
+    acrecimo = acrecimo.toLocaleString ('pt-BR', {style: 'currency', currency: 'BRL'});
+    setAcrecimo(acrecimo);
+    setResultado(resultadoFinal);
+    setMostrarResultado(true);
+    }
   }
 
 
@@ -52,7 +56,9 @@ const ModalCalculo = (props) => {
   open={props.open}
   onCancel={ () => 
     props.fechaModal() &
-    setMostrarResultado(false)}
+    setMostrarResultado(false)
+    & setIcmsSelecionado(0)
+  }
   footer={null}
   destroyOnClose={true}
 >
@@ -75,7 +81,7 @@ const ModalCalculo = (props) => {
     </Form.Item>
     <Form.Item>
       <Button type="primary" htmlType="submit" onClick={calcularIcms}>
-        <SaveFilled />Calcular
+        <CalculatorOutlined />Calcular
       </Button>
     </Form.Item>
   </Form>
