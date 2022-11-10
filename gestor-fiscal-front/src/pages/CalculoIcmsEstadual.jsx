@@ -1,27 +1,184 @@
-import React, { Fragment } from "react";
-
+import React, { Fragment, Component } from "react";
+import axios from 'axios';
 import 'antd/dist/antd.min.css';
 import Menu from "../components/Menu/Menu";
 import FooterContent from "../components/FooterContent/FooterContent";
-import { Layout} from "antd";
+import { Layout, Breadcrumb, Table, Button } from "antd";
+import { Link } from "react-router-dom";
+import TituloCentral from "../components/TituloCentral/TituloCentral";
+import ModalCalculo from "../components/ModalCalculo/ModalCalculo";
 
+import {
+    CalculatorOutlined 
+} from '@ant-design/icons';
 
 const { Header, Content, Footer } = Layout;
-const CalculoIcmsEstadual = () => (
-    <Fragment>
+
+export default class CalculoIcmsEstadual extends Component {
+
+  state = {
+    data: [],
+    dataICMS: [],
+    nome: '',
+    sigla: '',
+    valor: 0,
+    id: 0,
+    open: false,
+    idModal: 0,
+    siglaModal: '',
+    nomeModal: '',
+    valorModal: 0,
+}
+
+
+  componentDidMount() {
+    axios.get(`https://gestor-fiscal.herokuapp.com/api/produtos`)
+      .then(res => {
+        const data = res.data;
+        this.setState({ data });
+      })
+  }
+
+  cadastraItem = () => {
+    axios.post(`https://gestor-fiscal.herokuapp.com/api/produtos`, {
+      nome: this.state.nome,
+      sigla: this.state.sigla,
+      valor: this.state.valor,
+    })
+      .then(res => {
+        this.atualizaTabela();
+      })
+  }
+
+  atualizaTabela = () => {
+    axios.get(`https://gestor-fiscal.herokuapp.com/api/produtos`)
+      .then(res => {
+        const data = res.data;
+        this.setState({ data });
+      }
+      )
+  }
+
+  alteraItem = () => {
+    axios.put(`https://gestor-fiscal.herokuapp.com/api/produtos`, {
+      id: this.state.id,
+      nome: this.state.nome,
+      sigla: this.state.sigla,
+      valor: this.state.valor
+    })
+      .then(res => {
+        this.fechaModal();
+        this.atualizaTabela();
+      }
+      )
+  }
+
+  handleChangeName = (event) => {
+    this.setState({
+      nome: event.target.value,
+    });
+  }
+
+
+  handleChangeValue = (event) => {
+    this.setState({
+      valor: event.target.value,
+    });
+  }
+
+  handleChangeId = (event) => {
+    this.setState({
+      id: event.target.value
+    });
+  }
+
+  handleChangeSigla = (event) => {
+    this.setState({
+      sigla: event.target.value
+    });
+  }
+
+  calculaLinha = (idRecord, nomeRecord, valorRecord ) => {
+    this.setState({ open: true });
+    this.setState({ idModal: idRecord });
+    this.setState({ nomeModal: nomeRecord });
+    this.setState({ valorModal: valorRecord });
+    this.setState({ id: idRecord });
+    this.setState({ nome: nomeRecord });
+    this.setState({ valor: valorRecord });
+    this.atualizaTabela();
+    
+  }
+
+
+
+
+
+
+  fechaModal = () => {
+    this.setState({ open: false });
+  }
+
+  columns = [
+    {
+      title: 'ID',
+      dataIndex: 'id',
+      key: 'id',
+    },
+    {
+      title: 'Nome do produto',
+      dataIndex: 'nome',
+      key: 'nome',
+    },
+    {
+      title: 'Valor',
+      dataIndex: 'valor',
+      key: 'valor',
+    }, {
+      title: 'Ação',
+      key: 'acao',
+      render: (record, index) => < div className="btn-wrap"
+        key={index} >
+          <Button type="primary" onClick={() => this.calculaLinha(record.id, record.nome, record.valor)}>
+          <CalculatorOutlined />
+            Calcular ICMS
+          </Button>
+      </div >
+
+    } 
+];
+
+
+  render() {
+    return (
+      <Fragment>
         <Layout>
-            <Header>
-                <Menu />
-            </Header>
+          <Header>
+            <Menu />
+          </Header>
 
-            <Content className="content">
-            </Content>
+          <Content className="content">
+            <Breadcrumb style={{ margin: '16px' }}>
+              <Breadcrumb.Item><Link to="/">Início</Link></Breadcrumb.Item>
+              <Breadcrumb.Item><Link to="/cadastro-produtos">Calculo ICMS estadual</Link></Breadcrumb.Item>
+            </Breadcrumb>
 
-            <Footer className="footer">
-                <FooterContent />
-            </Footer>
+   
+            <ModalCalculo open={this.state.open} handleChangeId={this.handleChangeId} handleChangeName={this.handleChangeName} 
+            handleChangeValue={this.handleChangeValue} idModal={this.state.idModal} nomeModal={this.state.nomeModal}
+            valorModal={this.state.valorModal} fechaModal={this.fechaModal} valorSelecionado={this.state.valor}/>
+
+            <TituloCentral titulo="Produtos Cadastrados" />
+            <Table className="tabelaCadastrados" dataSource={this.state.data} rowKey="id" columns={this.columns} pagination={{ pageSize: 7, position: ['bottomCenter'] }} />;
+
+    
+          </Content>
+
+          <Footer className="footer">
+            <FooterContent />
+          </Footer>
         </Layout>
-    </Fragment>
-);
-
-export default CalculoIcmsEstadual;
+      </Fragment>
+    );
+  }
+}
