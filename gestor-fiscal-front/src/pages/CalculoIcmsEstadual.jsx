@@ -40,18 +40,8 @@ export default class CalculoIcmsEstadual extends Component {
         this.setState({ data });
       })
       .catch(error => {
+        this.setState({ mensagemErro: 'Não foi possível obter os dados da API' });
         this.setState({ temErro: true });
-      })
-  }
-
-  cadastraItem = () => {
-    axios.post(`https://gestor-fiscal.herokuapp.com/api/produtos`, {
-      nome: this.state.nome,
-      sigla: this.state.sigla,
-      valor: this.state.valor,
-    })
-      .then(res => {
-        this.atualizaTabela();
       })
   }
 
@@ -67,19 +57,6 @@ export default class CalculoIcmsEstadual extends Component {
       })
   }
 
-  alteraItem = () => {
-    axios.put(`https://gestor-fiscal.herokuapp.com/api/produtos`, {
-      id: this.state.id,
-      nome: this.state.nome,
-      sigla: this.state.sigla,
-      valor: this.state.valor
-    })
-      .then(res => {
-        this.fechaModal();
-        this.atualizaTabela();
-      }
-      )
-  }
 
   handleChangeName = (event) => {
     this.setState({

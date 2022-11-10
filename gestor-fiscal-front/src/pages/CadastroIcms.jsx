@@ -40,20 +40,25 @@ export default class CadastroIcms extends Component {
       })
       .catch(error => {
         this.setState({ temErro: true });
+        this.setState({ mensagemErro: 'Não foi possível obter os dados da API' });
       })
   }
 
   cadastraItem = () => {
-    axios.post(`https://gestor-fiscal.herokuapp.com/api/icms`, {
-      estado: this.state.estado,
-      sigla: this.state.sigla,
-      icms: this.state.icms,
-    })
-      .then(res => {
-        this.atualizaTabela();
+    if (this.state.estado === '' || this.state.sigla === 0 || this.state.icms === '') {
+      this.setState({ temErro: true });
+      this.setState({ mensagemErro: 'Preencha Todos os Campos' });
+    } else {
+      axios.post(`https://gestor-fiscal.herokuapp.com/api/icms`, {
+        estado: this.state.estado,
+        sigla: this.state.sigla,
+        icms: this.state.icms,
       })
+        .then(res => {
+          this.atualizaTabela();
+        })
+    }
   }
-
   atualizaTabela = () => {
     axios.get(`https://gestor-fiscal.herokuapp.com/api/icms`)
       .then(res => {
@@ -193,7 +198,7 @@ export default class CadastroIcms extends Component {
 
             <ModalCadastro open={this.state.open} handleChangeId={this.handleChangeId} handleChangeName={this.handleChangeName}
               handleChangeValue={this.handleChangeValue} idModal={this.state.idModal} siglaModal={this.state.siglaModal} nomeModal={this.state.nomeModal}
-              valorModal={this.state.valorModal} alteraItem={this.alteraItem} fechaModal={this.fechaModal} handleChangeSigla={this.handleChangeSigla} 
+              valorModal={this.state.valorModal} alteraItem={this.alteraItem} fechaModal={this.fechaModal} handleChangeSigla={this.handleChangeSigla}
               campoNomeFormulario="Nome do Estado:" tipoItem="estado" />
 
             <TituloCentral titulo="Icms Cadastrados" />

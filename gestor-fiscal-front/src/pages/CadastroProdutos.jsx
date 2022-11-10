@@ -21,15 +21,14 @@ export default class CadastroProdutos extends Component {
   state = {
     data: [],
     nome: '',
-    sigla: '',
     valor: 0,
     id: 0,
     open: false,
     idModal: 0,
-    siglaModal: '',
     nomeModal: '',
     valorModal: 0,
     temErro: false,
+    mensagemErro: ''
   }
 
 
@@ -41,19 +40,26 @@ export default class CadastroProdutos extends Component {
       }).catch(error => {
         console.log(error);
         this.setState({ temErro: true });
+        this.setState({ mensagemErro: 'Não foi possível obter os dados da API' });
       })
   }
 
   cadastraItem = () => {
-    axios.post(`https://gestor-fiscal.herokuapp.com/api/produtos`, {
-      nome: this.state.nome,
-      sigla: this.state.sigla,
-      valor: this.state.valor,
-    })
-      .then(res => {
-        this.atualizaTabela();
+    if (this.state.nome === '' || this.state.valor === 0) {
+      this.setState({ temErro: true });
+      this.setState({ mensagemErro: 'Preencha Todos os Campos' });
+    } else {
+      axios.post(`https://gestor-fiscal.herokuapp.com/api/produtos`, {
+        nome: this.state.nome,
+        valor: this.state.valor,
       })
+        .then(res => {
+          this.atualizaTabela();
+          this.setState({ temErro: false });
+        })
+    }
   }
+
 
   atualizaTabela = () => {
     axios.get(`https://gestor-fiscal.herokuapp.com/api/produtos`)
@@ -64,21 +70,26 @@ export default class CadastroProdutos extends Component {
       }).catch(error => {
         console.log(error);
         this.setState({ temErro: true });
+        this.setState({ temErro: true });
       })
   }
 
   alteraItem = () => {
-    axios.put(`https://gestor-fiscal.herokuapp.com/api/produtos`, {
-      id: this.state.id,
-      nome: this.state.nome,
-      sigla: this.state.sigla,
-      valor: this.state.valor
-    })
-      .then(res => {
-        this.fechaModal();
-        this.atualizaTabela();
-      }
-      )
+    if (this.state.id === 0 || this.state.nome === '' || this.state.valor === 0) {
+      this.setState({ temErro: true });
+      this.setState({ mensagemErro: 'Preencha Todos os Campos' });
+    } else {
+      axios.put(`https://gestor-fiscal.herokuapp.com/api/produtos`, {
+        id: this.state.id,
+        nome: this.state.nome,
+        valor: this.state.valor
+      })
+        .then(res => {
+          this.fechaModal();
+          this.atualizaTabela();
+          this.setState({ temErro: false });
+        })
+    }
   }
 
   handleChangeName = (event) => {
@@ -97,12 +108,6 @@ export default class CadastroProdutos extends Component {
   handleChangeId = (event) => {
     this.setState({
       id: event.target.value
-    });
-  }
-
-  handleChangeSigla = (event) => {
-    this.setState({
-      sigla: event.target.value
     });
   }
 
@@ -172,7 +177,7 @@ export default class CadastroProdutos extends Component {
     return (
       <Fragment>
         <Layout>
-          {this.state.temErro ? <Alert message="Não foi possível obter os dados da API" type="error" showIcon closable /> : null}
+          {this.state.temErro ? <Alert message={this.state.mensagemErro} type="error" showIcon closable /> : null}
           <Header>
             <Menu />
           </Header>
@@ -187,7 +192,7 @@ export default class CadastroProdutos extends Component {
             <ModalCadastro open={this.state.open} handleChangeId={this.handleChangeId} handleChangeName={this.handleChangeName}
               handleChangeValue={this.handleChangeValue} idModal={this.state.idModal} nomeModal={this.state.nomeModal}
               valorModal={this.state.valorModal} alteraItem={this.alteraItem} fechaModal={this.fechaModal}
-              campoNomeFormulario="Cadastro de Produtos:" tipoItem="produto"/>
+              campoNomeFormulario="Cadastro de Produtos:" tipoItem="produto" />
 
 
             <TituloCentral titulo="Produtos Cadastrados" />

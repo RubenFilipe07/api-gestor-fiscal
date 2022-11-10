@@ -13,23 +13,23 @@ const modalCadastro = (props) => (
   destroyOnClose={true}
 >
   <Form>
-    <Form.Item name={`id-${props.tipoItem}`} onChange={props.handleChangeId} label={`Id do ${props.tipoItem}`}>
+    <Form.Item name={`id-${props.tipoItem}`} onChange={props.handleChangeId} required rules={[{ required: true }]} label={`Id do ${props.tipoItem}` }>
       <Input type={"number"} defaultValue={props.idModal} />
     </Form.Item>
     {props.campoNomeFormulario === "Nome do Estado:" ? (
-    <Form.Item name="sigla-estado" onChange={props.handleChangeSigla} label="Sigla">
+    <Form.Item name="sigla-estado" onChange={props.handleChangeSigla} required rules={[{ required: true }]} label="Sigla">
         <Input  defaultValue={props.siglaModal}/>
     </Form.Item>
     ) : null}
-    <Form.Item name={`nome-${props.tipoItem}`} onChange={props.handleChangeName} label={`Nome do ${props.tipoItem}`}>
+    <Form.Item name={`nome-${props.tipoItem}`} onChange={props.handleChangeName} required rules={[{ required: true }]} label={`Nome do ${props.tipoItem}`}>
       <Input defaultValue={props.nomeModal} />
     </Form.Item>
     {props.tipoItem === 'estado' ? (
-      <Form.Item name={`valor-${props.tipoItem}`} onChange={props.handleChangeValue} label={`ICMS do ${props.tipoItem} (%)`}>
+      <Form.Item name={`valor-${props.tipoItem}`} onChange={props.handleChangeValue} required rules={[{ required: true }]} label={`ICMS do ${props.tipoItem} (%)`}>
         <Input type={"number"} defaultValue={props.valorModal} />
       </Form.Item> 
     ) : (
-      <Form.Item name={`valor-${props.tipoItem}`} onChange={props.handleChangeValue} label={`Valor do ${props.tipoItem}`}>
+      <Form.Item name={`valor-${props.tipoItem}`} onChange={props.handleChangeValue} required rules={[{ required: true }]} label={`Valor do ${props.tipoItem}`}>
       <Input type={"number"} defaultValue={props.valorModal} />
       </Form.Item>
     ) 
