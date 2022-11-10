@@ -3,7 +3,7 @@ import axios from 'axios';
 import 'antd/dist/antd.min.css';
 import Menu from "../components/Menu/Menu";
 import FooterContent from "../components/FooterContent/FooterContent";
-import { Layout, Breadcrumb, Table, Button, Space, Skeleton, Alert, Spin } from "antd";
+import { Layout, Breadcrumb, Table, Button, Space, Skeleton, Alert, Spin, Popconfirm } from "antd";
 import { Link } from "react-router-dom";
 import Formulario from "../components/FormularioCadastro/FormularioCadastro";
 import ModalCadastro from "../components/ModalCadastro/ModalCadastro";
@@ -157,10 +157,12 @@ export default class CadastroProdutos extends Component {
       render: (record, index) => < div className="btn-wrap"
         key={index} >
         <Space size="small" >
-          <Button type="primary" danger onClick={() => this.deletaProduto(record.id)}>
-            Apagar
-            <DeleteOutlined />
-          </Button>
+          <Popconfirm title="Tem certeza?" cancelText="Cancelar" onConfirm={() => this.deletaProduto(record.id)}>
+            <Button type="primary" danger >
+              <DeleteOutlined />
+              Apagar
+            </Button>
+          </Popconfirm>
           <Button type="primary" onClick={() => this.editaLinhaModal(record.id, record.nome, record.valor)}>
             <EditOutlined />
             Editar
