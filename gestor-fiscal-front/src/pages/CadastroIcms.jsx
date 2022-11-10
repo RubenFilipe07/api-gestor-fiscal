@@ -20,12 +20,14 @@ export default class CadastroIcms extends Component {
 
   state = {
     data: [],
-    nome: '',
-    valor: 0,
+    estado: '',
+    icms: 0,
+    sigla: '',
     id: 0,
     open: false,
     idModal: 0,
     nomeModal: '',
+    siglaModal: '',
     valorModal: 0
   }
 
@@ -41,10 +43,11 @@ export default class CadastroIcms extends Component {
       })
   }
 
-  cadastrarItem = () => {
+  cadastraItem = () => {
     axios.post(`https://gestor-fiscal.herokuapp.com/api/icms`, {
-      nome: this.state.nome,
-      valor: this.state.valor,
+      estado: this.state.estado,
+      sigla: this.state.sigla,
+      icms: this.state.icms,
     })
       .then(res => {
         this.atualizaTabela();
@@ -67,8 +70,9 @@ export default class CadastroIcms extends Component {
   alteraItem = () => {
     axios.put(`https://gestor-fiscal.herokuapp.com/api/icms`, {
       id: this.state.id,
-      nome: this.state.nome,
-      valor: this.state.valor
+      sigla: this.state.sigla,
+      estado: this.state.estado,
+      icms: this.state.icms
     })
       .then(res => {
         this.fechaModal();
@@ -79,20 +83,26 @@ export default class CadastroIcms extends Component {
 
   handleChangeName = (event) => {
     this.setState({
-      nome: event.target.value,
+      estado: event.target.value,
     });
   }
 
 
   handleChangeValue = (event) => {
     this.setState({
-      valor: event.target.value,
+      icms: event.target.value,
     });
   }
 
   handleChangeId = (event) => {
     this.setState({
       id: event.target.value
+    });
+  }
+
+  handleChangeSigla = (event) => {
+    this.setState({
+      sigla: event.target.value
     });
   }
 
@@ -104,14 +114,16 @@ export default class CadastroIcms extends Component {
       )
   };
 
-  editaLinhaModal = (idRecord, nomeRecord, valorRecord) => {
+  editaLinhaModal = (idRecord, estadoRecord, siglaRecord, valorRecord) => {
     this.setState({ open: true });
     this.setState({ idModal: idRecord });
-    this.setState({ nomeModal: nomeRecord });
+    this.setState({ nomeModal: estadoRecord });
     this.setState({ valorModal: valorRecord });
+    this.setState({ siglaModal: siglaRecord });
     this.setState({ id: idRecord });
-    this.setState({ nome: nomeRecord });
-    this.setState({ valor: valorRecord });
+    this.setState({ sigla: siglaRecord });
+    this.setState({ estado: estadoRecord });
+    this.setState({ icms: valorRecord });
     this.atualizaTabela();
   };
 
@@ -130,17 +142,17 @@ export default class CadastroIcms extends Component {
     {
       title: 'Nome do estado',
       dataIndex: 'estado',
-      key: 'nome',
+      key: 'estado',
     },
     {
       title: 'Sigla',
       dataIndex: 'sigla',
-      key: 'valor',
-    }, 
+      key: 'sigla',
+    },
     {
-        title: 'ICMS (%)',
-        dataIndex: 'icms',
-        key: 'icms',
+      title: 'ICMS (%)',
+      dataIndex: 'icms',
+      key: 'icms',
     },
     {
       title: 'Ação',
@@ -152,7 +164,7 @@ export default class CadastroIcms extends Component {
             Apagar
             <DeleteOutlined />
           </Button>
-          <Button type="primary" onClick={() => this.editaLinhaModal(record.id, record.nome, record.valor)}>
+          <Button type="primary" onClick={() => this.editaLinhaModal(record.id, record.estado, record.sigla, record.icms)}>
             <EditOutlined />
             Editar
           </Button>
@@ -179,9 +191,10 @@ export default class CadastroIcms extends Component {
               <Breadcrumb.Item><Link to="/cadastro-icms">Cadastro Icms</Link></Breadcrumb.Item>
             </Breadcrumb>
 
-            <ModalCadastro open={this.state.open} handleChangeId={this.handleChangeId} handleChangeName={this.handleChangeName} 
-            handleChangeValue={this.handleChangeValue} idModal={this.state.idModal} nomeModal={this.state.nomeModal}
-            valorModal={this.state.valorModal} alteraItem={this.alteraItem} fechaModal={this.fechaModal} />
+            <ModalCadastro open={this.state.open} handleChangeId={this.handleChangeId} handleChangeName={this.handleChangeName}
+              handleChangeValue={this.handleChangeValue} idModal={this.state.idModal} siglaModal={this.state.siglaModal} nomeModal={this.state.nomeModal}
+              valorModal={this.state.valorModal} alteraItem={this.alteraItem} fechaModal={this.fechaModal} handleChangeSigla={this.handleChangeSigla} 
+              campoNomeFormulario="Nome do Estado:" tipoItem="estado" />
 
             <TituloCentral titulo="Icms Cadastrados" />
 
@@ -190,7 +203,7 @@ export default class CadastroIcms extends Component {
             ) : (
               <Table className="tabelaCadastrados" dataSource={this.state.data} rowKey="id" columns={this.columns} pagination={{ pageSize: 7, position: ['bottomCenter'] }} />
             )}
-            
+
             <TituloCentral titulo="Cadastrar Novo Icms" />
             {this.state.data.length === 0 ? (
               <>
@@ -198,7 +211,7 @@ export default class CadastroIcms extends Component {
                 <Button className="btnTentarNovamente" icon={<ReloadOutlined />} onClick={this.atualizaTabela}>Tentar novamente</Button>
               </>
             ) : (
-              <Formulario cadastrarItem={this.cadastrarItem} handleChangeName={this.handleChangeName} handleChangeValue={this.handleChangeValue} campoNomeFormulario="Nome do Estado:"/>
+              <Formulario cadastraItem={this.cadastraItem} handleChangeName={this.handleChangeName} handleChangeSigla={this.handleChangeSigla} handleChangeValue={this.handleChangeValue} campoNomeFormulario="Nome do Estado:" />
             )}
           </Content>
 

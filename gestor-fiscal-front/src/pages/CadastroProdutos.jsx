@@ -186,7 +186,8 @@ export default class CadastroProdutos extends Component {
 
             <ModalCadastro open={this.state.open} handleChangeId={this.handleChangeId} handleChangeName={this.handleChangeName}
               handleChangeValue={this.handleChangeValue} idModal={this.state.idModal} nomeModal={this.state.nomeModal}
-              valorModal={this.state.valorModal} alteraItem={this.alteraItem} fechaModal={this.fechaModal} />
+              valorModal={this.state.valorModal} alteraItem={this.alteraItem} fechaModal={this.fechaModal}
+              campoNomeFormulario="Cadastro de Produtos:" tipoItem="produto"/>
 
 
             <TituloCentral titulo="Produtos Cadastrados" />
