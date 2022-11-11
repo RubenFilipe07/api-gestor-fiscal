@@ -1,7 +1,7 @@
 # Gestor fiscal
-Este é um projeto baseado numa API REST feita com <a href="https://spring.io/projects/spring-boot">Spring</a>, banco de dados
+Este é um projeto CRUD baseado numa API REST feita com <a href="https://spring.io/projects/spring-boot">Spring</a>, banco de dados
 <a href="https://www.postgresql.org/">PostgreSql</a> e uma aplicação <a href="https://reactjs.org/">React.js</a> que manipula os dados via axios e
-utiliza o ant design. Tem como objetivo servir de ferramenta para calcular os impostos sobre os produtos cadastrados.
+utiliza a biblioteca ant design. Tem como objetivo servir de ferramenta para calcular os impostos sobre os produtos cadastrados.
 
 <h3>Como instalar o projeto</h3>
 
@@ -36,23 +36,68 @@ utiliza o ant design. Tem como objetivo servir de ferramenta para calcular os im
 </a>
 
 <a href="https://gestor-fiscal.web.app/">
-  <img width="800" src="https://user-images.githubusercontent.com/53026536/200773248-180e6e4a-d92b-465f-a3e9-57ba9bd0bb50.png"/>
+  <img width="800" src="https://user-images.githubusercontent.com/53026536/201034686-0c3b1891-dc74-4591-b714-4dad8adcf077.png"/>
+ </a>
+ 
+<a href="https://gestor-fiscal.web.app/">
+  <img width="800" src="https://user-images.githubusercontent.com/53026536/201034702-b8eaf984-e7a7-4ff0-bbc0-193325ca765c.png"/>
 </a>
 
+<h2>Ferramentas utilizadas</h2>
 
-<h3>Ferramentas utilizadas</h3>
-<ul>
-    <li><a href="https://reactjs.org/">React.js</a></li>
-    <li><a href="https://reactrouter.com/en/main">React router</a></li>
-    <li><a href="https://ant.design">Ant.design</a></li>
-    <li><a href="https://ant.design/docs/spec/icon">Ant.design Icons</a></li>
-    <li><a href="https://axios-http.com/docs/intro">Axios</a></li>
-    <li><a href="https://spring.io/projects/spring-boot">Spring boot</a></li>
-    <li><a href="https://swagger.io">Swagger Ui</a></li>
-    <li><a href="https://firebase.google.com/">Firebase</a></li>
-    <li><a href="https://heroku.com">Heroku</a></li>
-    <li><a href="https://www.postgresql.org/">PostgreSql</a></li>
-</ul>
+<h3>Front-end</h3>
+
+  <a href="https://reactjs.org/">
+    <img src="https://img.shields.io/badge/React.jS-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  </a> <br/>
+  
+  <a href="https://reactrouter.com/en/main">
+    <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white" />
+  </a> <br/>
+  
+  <a href="https://axios-http.com/docs/intro">
+    <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white" />
+  </a> <br/>
+ 
+  <a href="https://ant.design">
+    <img src="https://img.shields.io/badge/Ant%20design-007DB8?style=for-the-badge&logo=antdesign&logoColor=white" />
+  </a> <br/>
+  
+  <a href="https://ant.design/docs/spec/icon">
+    <img src="https://img.shields.io/badge/Ant%20design%20Icons-007DB8?style=for-the-badge&logo=antdesign&logoColor=white" />
+  </a> <br/>
+  
+ <h3>Back-end</h3>
+
+  <a href="https://swagger.io">
+    <img src="https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white"/>
+  </a> <br/>
+  
+  <a href="https://spring.io/projects/spring-boot">
+  <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white" />
+  </a> <br/>
+  
+ <h3>Banco de dados</h3>
+ 
+  <a href="https://www.postgresql.org/">
+    <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" />
+  </a> <br/>
+
+ <h3>Hospedagem</h3>
+ 
+  <a href="https://firebase.google.com/">
+    <img src="https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black" />
+  </a> <br/>
+  
+  <a href="https://heroku.com">
+    <img src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white" />
+  </a> <br/>
+  
 
 <h3>Licensa</h3>
-<a href="https://github.com/RubenFilipe07/spring-react-gestor-fiscal/blob/main/LICENSE">MIT</a>
+
+  <a href="https://github.com/RubenFilipe07/spring-react-gestor-fiscal/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-blue.svg" />
+  </a> 
+  
+
