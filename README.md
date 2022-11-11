@@ -95,4 +95,9 @@ utiliza a biblioteca ant design. Tem como objetivo servir de ferramenta para cal
   
 
 <h3>Licensa</h3>
-<a href="https://github.com/RubenFilipe07/spring-react-gestor-fiscal/blob/main/LICENSE">MIT</a>
+
+  <a href="https://github.com/RubenFilipe07/spring-react-gestor-fiscal/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-blue.svg" />
+  </a> 
+  
+
