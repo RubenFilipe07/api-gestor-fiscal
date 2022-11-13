@@ -28,7 +28,8 @@ export default class CadastroIcms extends Component {
     idModal: 0,
     nomeModal: '',
     siglaModal: '',
-    valorModal: 0
+    valorModal: 0,
+    recebeuDados: false,
   }
 
 
@@ -37,9 +38,11 @@ export default class CadastroIcms extends Component {
       .then(res => {
         const data = res.data;
         this.setState({ data });
+        this.setState({ recebeuDados: true });
       })
       .catch(error => {
         this.setState({ temErro: true });
+        this.setState({ recebeuDados: false });
         this.setState({ mensagemErro: 'Não foi possível obter os dados da API' });
       })
   }
@@ -65,9 +68,11 @@ export default class CadastroIcms extends Component {
         const data = res.data;
         this.setState({ data });
         this.setState({ temErro: false });
+        this.setState({ recebeuDados: true });
       }
       ).catch(error => {
         console.log(error);
+        this.setState({ recebeuDados: false });
         this.setState({ temErro: true });
       })
   }
@@ -206,14 +211,14 @@ export default class CadastroIcms extends Component {
 
             <TituloCentral titulo="Icms Cadastrados" />
 
-            {this.state.data.length === 0 ? (
+            {this.state.recebeuDados === false ? (
               <Skeleton active />
             ) : (
               <Table className="tabelaCadastrados" dataSource={this.state.data} rowKey="id" columns={this.columns} pagination={{ pageSize: 7, position: ['bottomCenter'] }} />
             )}
 
             <TituloCentral titulo="Cadastrar Novo Icms" />
-            {this.state.data.length === 0 ? (
+            {this.state.recebeuDados === false ? (
               <>
                 <Spin tip="Carregando dados da API..." size="large" style={{ fontSize: 24 }} />
                 <Button className="btnTentarNovamente" icon={<ReloadOutlined />} onClick={this.atualizaTabela}>Tentar novamente</Button>
