@@ -32,18 +32,31 @@ utiliza a biblioteca ant design. Tem como objetivo servir de ferramenta para cal
 
 <h3>Demonstração</h3>
 
-https://user-images.githubusercontent.com/53026536/205219664-287bbfe3-e492-407f-b812-c8a90ad9bc17.mp4
+https://user-images.githubusercontent.com/53026536/205221103-497411b2-7185-4366-ad60-4b6b53719e5b.mp4
 
 <a href="https://gestor-fiscal.herokuapp.com/swagger-ui.html">
-  <img width="800" src="https://user-images.githubusercontent.com/53026536/200506717-d0f78b11-46bd-4648-9d7b-32c6c97ddeb3.png"/>
+  <img width="1100" src="https://user-images.githubusercontent.com/53026536/200506717-d0f78b11-46bd-4648-9d7b-32c6c97ddeb3.png"/>
 </a>
 
 <a href="https://gestor-fiscal.web.app/">
-  <img width="800" src="https://user-images.githubusercontent.com/53026536/201034686-0c3b1891-dc74-4591-b714-4dad8adcf077.png"/>
+  <img width="1100" src="https://user-images.githubusercontent.com/53026536/201034702-b8eaf984-e7a7-4ff0-bbc0-193325ca765c.png"/>
+</a>
+
+<a href="https://gestor-fiscal.web.app/">
+  <img width="1100" src="https://user-images.githubusercontent.com/53026536/201034686-0c3b1891-dc74-4591-b714-4dad8adcf077.png"/>
  </a>
  
 <a href="https://gestor-fiscal.web.app/">
-  <img width="800" src="https://user-images.githubusercontent.com/53026536/201034702-b8eaf984-e7a7-4ff0-bbc0-193325ca765c.png"/>
+  <img width="1100" src="https://user-images.githubusercontent.com/53026536/205221434-62a269f3-1509-4062-886f-717012dd488f.png"/>
+</a>
+
+<a href="https://gestor-fiscal.web.app/">
+  <img width="1100" src="https://user-images.githubusercontent.com/53026536/205221486-e2c388b3-7b9c-42b2-9c78-c42491b3951d.png"/>
+</a>
+
+
+<a href="https://gestor-fiscal.web.app/">
+  <img width="1100" src="https://user-images.githubusercontent.com/53026536/205221239-f9339a5d-bf41-495d-8dd4-fa2ab0a7d564.png"/>
 </a>
 
 <h2>Ferramentas utilizadas</h2>
