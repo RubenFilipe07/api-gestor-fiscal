@@ -1,6 +1,3 @@
-# Ignore Maven build files
-target/
-
 # Ignore log files
 logs/
 
