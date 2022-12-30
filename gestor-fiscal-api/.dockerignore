@@ -1,0 +1,11 @@
+# Ignore Maven build files
+target/
+
+# Ignore log files
+logs/
+
+# Ignore IntelliJ IDEA files
+.idea/
+
+# Ignore .git directories
+.git/
