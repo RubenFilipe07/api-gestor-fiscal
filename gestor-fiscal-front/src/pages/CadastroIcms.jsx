@@ -34,7 +34,7 @@ export default class CadastroIcms extends Component {
 
 
   componentDidMount() {
-    axios.get(`https://gestor-fiscal.herokuapp.com/api/icms`)
+    axios.get(`https://spring-api-gestor-fiscal.fly.dev/api/icms`)
       .then(res => {
         const data = res.data;
         this.setState({ data });
@@ -52,7 +52,7 @@ export default class CadastroIcms extends Component {
       this.setState({ temErro: true });
       this.setState({ mensagemErro: 'Preencha Todos os Campos' });
     } else {
-      axios.post(`https://gestor-fiscal.herokuapp.com/api/icms`, {
+      axios.post(`https://spring-api-gestor-fiscal.fly.dev/api/icms`, {
         estado: this.state.estado,
         sigla: this.state.sigla,
         icms: this.state.icms,
@@ -63,7 +63,7 @@ export default class CadastroIcms extends Component {
     }
   }
   atualizaTabela = () => {
-    axios.get(`https://gestor-fiscal.herokuapp.com/api/icms`)
+    axios.get(`https://spring-api-gestor-fiscal.fly.dev/api/icms`)
       .then(res => {
         const data = res.data;
         this.setState({ data });
@@ -78,7 +78,7 @@ export default class CadastroIcms extends Component {
   }
 
   alteraItem = () => {
-    axios.put(`https://gestor-fiscal.herokuapp.com/api/icms`, {
+    axios.put(`https://spring-api-gestor-fiscal.fly.dev/api/icms`, {
       id: this.state.id,
       sigla: this.state.sigla,
       estado: this.state.estado,
@@ -117,7 +117,7 @@ export default class CadastroIcms extends Component {
   }
 
   deletaIcms = (id) => {
-    axios.delete(`https://gestor-fiscal.herokuapp.com/api/icms/` + id)
+    axios.delete(`https://spring-api-gestor-fiscal.fly.dev/api/icms/` + id)
       .then(res => {
         this.atualizaTabela();
       }

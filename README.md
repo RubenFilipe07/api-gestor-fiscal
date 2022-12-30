@@ -27,14 +27,14 @@ utiliza a biblioteca ant design. Tem como objetivo servir de ferramenta para cal
 <h3>Links</h3>
 <ul>
     <li><a href="https://gestor-fiscal.web.app/">Aplicação -> gestor-fiscal.web.app</a></li>
-    <li><a href="https://gestor-fiscal.herokuapp.com/swagger-ui.html">API -> https://gestor-fiscal.herokuapp.com/swagger-ui.html</a></li>
+    <li><a href="https://spring-api-gestor-fiscal.fly.dev/swagger-ui.html">API -> https://spring-api-gestor-fiscal.fly.dev/swagger-ui.html</a></li>
 </ul>
 
 <h3>Demonstração</h3>
 
 https://user-images.githubusercontent.com/53026536/205221103-497411b2-7185-4366-ad60-4b6b53719e5b.mp4
 
-<a href="https://gestor-fiscal.herokuapp.com/swagger-ui.html">
+<a href="https://spring-api-gestor-fiscal.fly.dev/swagger-ui.html">
   <img width="1100" src="https://user-images.githubusercontent.com/53026536/200506717-d0f78b11-46bd-4648-9d7b-32c6c97ddeb3.png"/>
 </a>
 
