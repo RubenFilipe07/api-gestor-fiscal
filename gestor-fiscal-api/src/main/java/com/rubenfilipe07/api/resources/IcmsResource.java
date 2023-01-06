@@ -18,14 +18,10 @@ import com.rubenfilipe07.api.models.Icms;
 import com.rubenfilipe07.api.repository.IcmsRepository;
 
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-
-
 
 @RestController
 @RequestMapping(value="/api")
-@Api(value="API REST")
+
 @CrossOrigin(origins="*")
 public class IcmsResource {
 	
@@ -33,37 +29,31 @@ public class IcmsResource {
 	private IcmsRepository icmsRepository;
 	
 	@GetMapping("/icms")
-	@ApiOperation(value="Retorna a lista de imcs cadastrados")
 	public List<Icms> listaIcms(){
 		return icmsRepository.findAll();
 	}
 	
 	@GetMapping("/icms/{id}")
-	@ApiOperation(value="Retorna um imcs único de acordo com seu id")
 	public Optional<Icms> listaIcmsId(@PathVariable(value="id") long id) {
 		return icmsRepository.findById(id);
 	}
 	
 	@PostMapping("/icms")
-	@ApiOperation(value="Salva o icms")
 	public Icms salvaIcms(@RequestBody Icms icms) {
 		return icmsRepository.save(icms);
 	}
 
 	@PutMapping("/icms")
-	@ApiOperation(value="Atualiza o imcs")
 	public Icms atualizarIcms(@RequestBody Icms icms) {
 		return icmsRepository.save(icms);
 	}
 	
 	@DeleteMapping("/icms")
-	@ApiOperation(value="Deleta o imcs")
 	public void deletaIcms(@RequestBody Icms icms) {
 		icmsRepository.delete(icms);
 	}
 	
 	@DeleteMapping("/icms/{id}")
-	@ApiOperation(value="Deleta um icms único de acordo com seu id")
 	public void deletaIcmsId(@PathVariable(value="id") long id) {
 		icmsRepository.deleteById(id);
 	}
