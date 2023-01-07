@@ -24,11 +24,22 @@ utiliza a biblioteca ant design. Tem como objetivo servir de ferramenta para cal
   <li>Abra o seguinte link em seu navegador de preferência: <code>http://localhost:8080/</code></li>
 </ol>
 
-<h3>Links</h3>
+<h3>Links (Localhost)</h3>
+<ul>
+    <li><a href="http://localhost:3000/">Aplicação -> http://localhost:3000/</a></li>
+    <li><a href="http://localhost:8080/">Docs -> http://localhost:8080/swagger-ui.html</a></li>
+    <li><a href="http://localhost:8080/api/produtos/">API -> http://localhost:8080/api/produtos/</a></li>
+    <li><a href="http://localhost:8080/api/icms/">API -> http://localhost:8080/api/icms/</a></li>
+</ul>
+
+<h3>Links (Servidor)</h3>
 <ul>
     <li><a href="https://gestor-fiscal.web.app/">Aplicação -> gestor-fiscal.web.app</a></li>
-    <li><a href="https://spring-api-gestor-fiscal.fly.dev/swagger-ui.html">API -> https://spring-api-gestor-fiscal.fly.dev/swagger-ui.html</a></li>
+    <li><a href="https://spring-api-gestor-fiscal.fly.dev/api/produtos">API -> https://spring-api-gestor-fiscal.fly.dev/api/produtos</a></li>
+    <li><a href="https://spring-api-gestor-fiscal.fly.dev/api/icms">API -> https://spring-api-gestor-fiscal.fly.dev/api/icms</a></li>
 </ul>
+
+> devido o plano gratuito do fly.io limitar o uso de ram em apenas 256MB, o Swagger UI foi removido no servidor.
 
 <h3>Demonstração</h3>
 
@@ -105,8 +116,8 @@ https://user-images.githubusercontent.com/53026536/205221103-497411b2-7185-4366-
     <img src="https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black" />
   </a> <br/>
   
-  <a href="https://heroku.com">
-    <img src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white" />
+  <a href="https://fly.io/">
+    <img src="https://img.shields.io/badge/fly.io-8e5ef2?style=for-the-badge" />
   </a> <br/>
   
 
