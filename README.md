@@ -35,9 +35,9 @@ utiliza a biblioteca ant design. Tem como objetivo servir de ferramenta para cal
 <h3>Links (Servidor)</h3>
 <ul>
     <li><a href="https://gestor-fiscal.web.app/">Aplicação -> gestor-fiscal.web.app</a></li>
-    <li><a  href="http://localhost:8080/">Docs -> https://spring-api-gestor-fiscal.fly.dev/swagger-ui.html</a></li>
-    <li><a href="https://api-gestor-fiscal.up.railway.app/api/produtos">API -> https://spring-api-gestor-fiscal.fly.dev/api/produtos</a></li>
-    <li><a href="https://api-gestor-fiscal.up.railway.app/api/icms">API -> https://spring-api-gestor-fiscal.fly.dev/api/icms</a></li>
+    <li><a  href="https://api-gestor-fiscal.up.railway.app/swagger-ui.html">Docs -> https://api-gestor-fiscal.up.railway.app/swagger-ui.html</a></li>
+    <li><a href="https://api-gestor-fiscal.up.railway.app/api/icms">API -> https://api-gestor-fiscal.up.railway.app/api/icms</a></li>
+    <li><a href="https://api-gestor-fiscal.up.railway.app/api/produtos">API -> https://api-gestor-fiscal.up.railway.app/api/produtos</a></li>
 </ul>
 
 <h3>Demonstração</h3>
