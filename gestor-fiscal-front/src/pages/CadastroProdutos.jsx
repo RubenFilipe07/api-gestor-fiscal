@@ -34,7 +34,7 @@ export default class CadastroProdutos extends Component {
 
 
   componentDidMount() {
-    axios.get(`https://spring-api-gestor-fiscal.fly.dev/api/produtos`)
+    axios.get(`http://localhost:8080/api/produtos`)
       .then(res => {
         const data = res.data;
         this.setState({ data });
@@ -52,7 +52,7 @@ export default class CadastroProdutos extends Component {
       this.setState({ temErro: true });
       this.setState({ mensagemErro: 'Preencha Todos os Campos' });
     } else {
-      axios.post(`https://spring-api-gestor-fiscal.fly.dev/api/produtos`, {
+      axios.post(`http://localhost:8080/api/produtos`, {
         nome: this.state.nome,
         valor: this.state.valor,
       })
@@ -65,7 +65,7 @@ export default class CadastroProdutos extends Component {
 
 
   atualizaTabela = () => {
-    axios.get(`https://spring-api-gestor-fiscal.fly.dev/api/produtos`)
+    axios.get(`http://localhost:8080/api/produtos`)
       .then(res => {
         const data = res.data;
         this.setState({ data });
@@ -83,7 +83,7 @@ export default class CadastroProdutos extends Component {
       this.setState({ temErro: true });
       this.setState({ mensagemErro: 'Preencha Todos os Campos' });
     } else {
-      axios.put(`https://spring-api-gestor-fiscal.fly.dev/api/produtos`, {
+      axios.put(`http://localhost:8080/api/produtos`, {
         id: this.state.id,
         nome: this.state.nome,
         valor: this.state.valor
@@ -116,7 +116,7 @@ export default class CadastroProdutos extends Component {
   }
 
   deletaProduto = (id) => {
-    axios.delete(`https://spring-api-gestor-fiscal.fly.dev/api/produtos/` + id)
+    axios.delete(`http://localhost:8080/api/produtos/` + id)
       .then(res => {
         this.atualizaTabela();
       }

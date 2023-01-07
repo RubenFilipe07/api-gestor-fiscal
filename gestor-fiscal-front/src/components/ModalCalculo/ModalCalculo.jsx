@@ -18,7 +18,7 @@ const ModalCalculo = (props) => {
   const [acrecimo, setAcrecimo] = useState(0);
 
   useEffect(() => {
-    axios.get(`https://spring-api-gestor-fiscal.fly.dev/api/icms`)
+    axios.get(`http://localhost:8080/api/icms`)
       .then(res => {
         const dataICMS = res.data;
         setDataICMS(dataICMS);
