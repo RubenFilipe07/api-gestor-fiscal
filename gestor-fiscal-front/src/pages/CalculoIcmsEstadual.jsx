@@ -34,7 +34,7 @@ export default class CalculoIcmsEstadual extends Component {
 
 
   componentDidMount() {
-    axios.get(`https://spring-api-gestor-fiscal.fly.dev/api/produtos`)
+    axios.get(`https://api-gestor-fiscal.up.railway.app/api/produtos`)
       .then(res => {
         const data = res.data;
         this.setState({ data });
@@ -46,7 +46,7 @@ export default class CalculoIcmsEstadual extends Component {
   }
 
   atualizaTabela = () => {
-    axios.get(`https://spring-api-gestor-fiscal.fly.dev/api/produtos`)
+    axios.get(`https://api-gestor-fiscal.up.railway.app/api/produtos`)
       .then(res => {
         const data = res.data;
         this.setState({ data });

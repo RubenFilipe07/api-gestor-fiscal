@@ -34,7 +34,7 @@ export default class CadastroIcms extends Component {
 
 
   componentDidMount() {
-    axios.get(`https://spring-api-gestor-fiscal.fly.dev/api/icms`)
+    axios.get(`https://api-gestor-fiscal.up.railway.app/api/icms`)
       .then(res => {
         const data = res.data;
         this.setState({ data });
@@ -52,7 +52,7 @@ export default class CadastroIcms extends Component {
       this.setState({ temErro: true });
       this.setState({ mensagemErro: 'Preencha Todos os Campos' });
     } else {
-      axios.post(`https://spring-api-gestor-fiscal.fly.dev/api/icms`, {
+      axios.post(`https://api-gestor-fiscal.up.railway.app/api/icms`, {
         estado: this.state.estado,
         sigla: this.state.sigla,
         icms: this.state.icms,
@@ -63,7 +63,7 @@ export default class CadastroIcms extends Component {
     }
   }
   atualizaTabela = () => {
-    axios.get(`https://spring-api-gestor-fiscal.fly.dev/api/icms`)
+    axios.get(`https://api-gestor-fiscal.up.railway.app/api/icms`)
       .then(res => {
         const data = res.data;
         this.setState({ data });
@@ -78,7 +78,7 @@ export default class CadastroIcms extends Component {
   }
 
   alteraItem = () => {
-    axios.put(`https://spring-api-gestor-fiscal.fly.dev/api/icms`, {
+    axios.put(`https://api-gestor-fiscal.up.railway.app/api/icms`, {
       id: this.state.id,
       sigla: this.state.sigla,
       estado: this.state.estado,
@@ -117,7 +117,7 @@ export default class CadastroIcms extends Component {
   }
 
   deletaIcms = (id) => {
-    axios.delete(`https://spring-api-gestor-fiscal.fly.dev/api/icms/` + id)
+    axios.delete(`https://api-gestor-fiscal.up.railway.app/api/icms/` + id)
       .then(res => {
         this.atualizaTabela();
       }
