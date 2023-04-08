@@ -124,6 +124,4 @@ https://user-images.githubusercontent.com/53026536/205221103-497411b2-7185-4366-
 
   <a href="https://github.com/RubenFilipe07/spring-react-gestor-fiscal/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-blue.svg" />
-  </a> 
-  
-
+  </a>
