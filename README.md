@@ -35,16 +35,16 @@ utiliza a biblioteca ant design. Tem como objetivo servir de ferramenta para cal
 <h3>Links (Servidor)</h3>
 <ul>
     <li><a href="https://gestor-fiscal.web.app/">Aplicação -> gestor-fiscal.web.app</a></li>
-    <li><a  href="https://api-gestor-fiscal.up.railway.app/swagger-ui.html">Docs -> https://api-gestor-fiscal.up.railway.app/swagger-ui.html</a></li>
-    <li><a href="https://api-gestor-fiscal.up.railway.app/api/icms">API -> https://api-gestor-fiscal.up.railway.app/api/icms</a></li>
-    <li><a href="https://api-gestor-fiscal.up.railway.app/api/produtos">API -> https://api-gestor-fiscal.up.railway.app/api/produtos</a></li>
+    <li><a  href="https://spring-react-gestor-fiscal-production.up.railway.app/swagger-ui.html">Docs -> https://spring-react-gestor-fiscal-production.up.railway.app/swagger-ui.html</a></li>
+    <li><a href="https://spring-react-gestor-fiscal-production.up.railway.app/api/icms">API -> https://spring-react-gestor-fiscal-production.up.railway.app/api/icms</a></li>
+    <li><a href="https://spring-react-gestor-fiscal-production.up.railway.app/api/produtos">API ->https://spring-react-gestor-fiscal-production.up.railway.app/api/produtos</a></li>
 </ul>
 
 <h3>Demonstração</h3>
 
 https://user-images.githubusercontent.com/53026536/205221103-497411b2-7185-4366-ad60-4b6b53719e5b.mp4
 
-<a href="https://api-gestor-fiscal.up.railway.app/swagger-ui.html">
+<a href="https://spring-react-gestor-fiscal-production.up.railway.app/swagger-ui.html">
   <img width="1100" src="https://user-images.githubusercontent.com/53026536/200506717-d0f78b11-46bd-4648-9d7b-32c6c97ddeb3.png"/>
 </a>
 
