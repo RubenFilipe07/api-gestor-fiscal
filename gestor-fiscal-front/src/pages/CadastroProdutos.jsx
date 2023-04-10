@@ -31,10 +31,10 @@ export default class CadastroProdutos extends Component {
     mensagemErro: '',
     recebeuDados: false
   }
-
+  
 
   componentDidMount() {
-    axios.get(`https://api-gestor-fiscal.up.railway.app/api/produtos`)
+    axios.get(`https://spring-react-gestor-fiscal-production.up.railway.app/api/produtos`)
       .then(res => {
         const data = res.data;
         this.setState({ data });
@@ -52,7 +52,7 @@ export default class CadastroProdutos extends Component {
       this.setState({ temErro: true });
       this.setState({ mensagemErro: 'Preencha Todos os Campos' });
     } else {
-      axios.post(`https://api-gestor-fiscal.up.railway.app/api/produtos`, {
+      axios.post(`https://spring-react-gestor-fiscal-production.up.railway.app/api/produtos`, {
         nome: this.state.nome,
         valor: this.state.valor,
       })
@@ -65,7 +65,7 @@ export default class CadastroProdutos extends Component {
 
 
   atualizaTabela = () => {
-    axios.get(`https://api-gestor-fiscal.up.railway.app/api/produtos`)
+    axios.get(`https://spring-react-gestor-fiscal-production.up.railway.app/api/produtos`)
       .then(res => {
         const data = res.data;
         this.setState({ data });
@@ -83,7 +83,7 @@ export default class CadastroProdutos extends Component {
       this.setState({ temErro: true });
       this.setState({ mensagemErro: 'Preencha Todos os Campos' });
     } else {
-      axios.put(`https://api-gestor-fiscal.up.railway.app/api/produtos`, {
+      axios.put(`https://spring-react-gestor-fiscal-production.up.railway.app/api/produtos`, {
         id: this.state.id,
         nome: this.state.nome,
         valor: this.state.valor
@@ -116,7 +116,7 @@ export default class CadastroProdutos extends Component {
   }
 
   deletaProduto = (id) => {
-    axios.delete(`https://api-gestor-fiscal.up.railway.app/api/produtos/` + id)
+    axios.delete(`https://spring-react-gestor-fiscal-production.up.railway.app/api/produtos/` + id)
       .then(res => {
         this.atualizaTabela();
       }

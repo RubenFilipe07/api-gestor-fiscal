@@ -18,7 +18,7 @@ const ModalCalculo = (props) => {
   const [acrecimo, setAcrecimo] = useState(0);
 
   useEffect(() => {
-    axios.get(`https://api-gestor-fiscal.up.railway.app/api/icms`)
+    axios.get(`https://spring-react-gestor-fiscal-production.up.railway.app/api/icms`)
       .then(res => {
         const dataICMS = res.data;
         setDataICMS(dataICMS);
